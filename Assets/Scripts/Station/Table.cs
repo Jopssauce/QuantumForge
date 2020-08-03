@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Table : Station
+public class Table : Interactable
 {
-    private void Awake()
+    Item itemInfo;
+    public SpriteRenderer itemSprite;
+
+    //Place Item on Table
+    public void PlaceItem(Item item)
     {
-        input.onInput += DisplayItem;
+
     }
 
-    public void DisplayItem()
+    //Gives Item to character
+    public void GiveItem(Item item, Character character)
     {
-        output.itemInfo = input.itemInfo;
-        input.itemInfo = null;
-        output.OutputItem();
+
     }
 }

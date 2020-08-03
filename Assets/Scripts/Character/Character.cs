@@ -35,11 +35,11 @@ public class Character : MonoBehaviour
         {
             Record();
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && !isRecording)
         {
             RewindRecording();
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !isRecording)
         {
             PlayRecording();
         }
@@ -77,11 +77,12 @@ public class Character : MonoBehaviour
                 if (action.action == CharacterActions.Actions.Pickup)
                 {
                     //Do Placedown
+                    //characterActions.Input(characterActions.inputInRange);
                 }
                 if (action.action == CharacterActions.Actions.PlaceDown)
                 {
                     //Do Pickup
-
+                    //characterActions.TakeItem(characterActions.outputInRange);
                 }
             }
             else
@@ -102,11 +103,11 @@ public class Character : MonoBehaviour
 
                 if (action.action == CharacterActions.Actions.Pickup)
                 {
-                    characterActions.PickUp(characterActions.outputInRange);
+                    //characterActions.TakeItem(characterActions.outputInRange);
                 }
                 if (action.action == CharacterActions.Actions.PlaceDown)
                 {
-
+                    //characterActions.Input(characterActions.inputInRange);
                 }
             }
 
@@ -132,31 +133,41 @@ public class Character : MonoBehaviour
 
     public void Record()
     {
-        isRecording = true;
+        isRecording = !isRecording;
         totalSteps = Mathf.RoundToInt(maxRecordTime / Time.fixedDeltaTime);
     }
 
     public void RecordMovement()
     {
-        CharacterAction action = new CharacterAction();
-        action.SetMovement(transform.position, characterController.facingDirection);
-        actions.Add(action);
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            action.SetAction(CharacterActions.Actions.Move);
+            action.SetMovement(transform.position, characterController.facingDirection);
+            actions.Add(action);
+        }
+        
     }
 
     public void RecordPickUp(Item item)
     {
-        CharacterAction action = new CharacterAction();
-        action.SetAction(CharacterActions.Actions.Pickup);
-        actions.Add(action);
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            //action.SetAction(CharacterActions.Actions.Pickup);
+            action.SetMovement(transform.position, characterController.facingDirection);
+            actions.Add(action);
+        }
     }
 
     public void RecordPlaceDown(Item item)
     {
-
-    }
-
-    public void RecordInsert(Item item, Station station)
-    {
-        
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            //action.SetAction(CharacterActions.Actions.PlaceDown);
+            action.SetMovement(transform.position, characterController.facingDirection);
+            actions.Add(action);
+        }
     }
 }

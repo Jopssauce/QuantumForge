@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Station : MonoBehaviour
+public class Station : Interactable
 {
 
     public Item item;

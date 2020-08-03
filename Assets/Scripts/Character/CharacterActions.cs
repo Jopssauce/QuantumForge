@@ -14,9 +14,12 @@ public class CharacterActions : MonoBehaviour
     Character character;
     public float rayDistance = 1;
 
-    public Station stationInRange;
-    public StationOutput outputInRange;
-    public StationInput inputInRange;
+    //public Station stationInRange;
+    //public StationOutput outputInRange;
+    //public StationInput inputInRange;
+    //public StationIO stationIOInRange;
+
+    public Interactable interactable;
 
     RaycastHit2D[] hit;
     Ray2D ray;
@@ -29,23 +32,11 @@ public class CharacterActions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
         {
-            if (outputInRange != null)
+            if (interactable != null)
             {
-                if (outputInRange.itemInfo != null)
-                {
-                    PickUp(outputInRange);
-                    return;
-                }
-            }
-            if (inputInRange != null)
-            {
-                if (inputInRange.itemInfo == null)
-                {
-                    PlaceDown(inputInRange);
-                    return;
-                }
+                Interact(interactable);
             }
         }
 
@@ -56,44 +47,43 @@ public class CharacterActions : MonoBehaviour
         {
             foreach (var result in hit)
             {
-                if (result.collider.GetComponent<StationOutput>() != null)
+                if (result.collider.GetComponent<Interactable>() != null)
                 {
-                    outputInRange = result.collider.GetComponent<StationOutput>();
-                }
-                else if(result.collider.GetComponent<StationInput>() != null)
-                {
-                    inputInRange = result.collider.GetComponent<StationInput>();
+                    interactable = result.collider.GetComponent<Interactable>();
                 }
             }
         }
         else
         {
-            outputInRange = null;
-            inputInRange = null;
+            interactable = null;
+            interactable = null;
         }
     }
 
+    public void Interact(Interactable interactable)
+    {
+        
+    }
  
-    public void PickUp(StationOutput station)
-    {
-        if (station.itemInfo != null)
-        {
-            Item item = station.itemInfo;
-            station.itemInfo = null;
-            station.spriteRenderer.sprite = null;
+    //public void TakeItem(StationIO station)
+    //{
+    //    if (station.itemInfo != null)
+    //    {
+    //        Item item = station.GiveItem();
+    //        character.items.Add(item);
+    //        character.RecordPickUp(item);
+    //    }
+    //}
 
-            character.items.Add(item);
-        }
-    }
-
-    public void PlaceDown(StationInput station)
-    {
-        if (character.items.Count > 0)
-        {
-            station.InputItem(character.items[0]);
-            character.items.RemoveAt(0);
-        }
-    }
+    //public void Input(StationIO station)
+    //{
+    //    if (character.items.Count > 0)
+    //    {
+    //        station.InputItem(character.items[0]);
+    //        character.RecordPlaceDown(character.items[0]);
+    //        character.items.RemoveAt(0);
+    //    }
+    //}
 
     public void OnDrawGizmos()
     {

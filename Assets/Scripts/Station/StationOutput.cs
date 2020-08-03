@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StationOutput : MonoBehaviour
+public class StationOutput : StationIO
 {
     public delegate void OnOutput();
     public event OnOutput onOutput;
 
-    public Station station;
-    public Item itemInfo;
-    public SpriteRenderer spriteRenderer;
-
-    public void OutputItem()
+    public void OutputItem(Item item)
     {
-        spriteRenderer.sprite = itemInfo.sprite;
+
         onOutput?.Invoke();
+    }
+
+    public void DisplayItem()
+    {
+
+    }
+
+    public void GiveItem(Item item, Character character)
+    {
+
+    }
+
+    public void ClearOutput()
+    {
+
     }
 }

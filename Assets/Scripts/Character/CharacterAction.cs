@@ -15,7 +15,6 @@ public class CharacterAction
     }
     public void SetMovement(Vector2 pos, Vector2 direction)
     {
-        action = CharacterActions.Actions.Move;
         this.position = pos;
         this.facingDirection = direction;
     }
