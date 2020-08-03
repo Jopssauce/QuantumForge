@@ -14,6 +14,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     Vector2 currentVelocity;
     Vector2 targetVelocity;
+    public Vector2 facingDirection;
 
     Rigidbody2D rgBody2D;
 
@@ -47,10 +48,30 @@ public class CharacterController2D : MonoBehaviour
     public void MoveHorizontal(float axis)
     {
         axisX = axis;
+        if (axis > 0)
+        {
+            facingDirection.x = 1;
+            facingDirection.y = 0;
+        }
+        else if (axis < 0)
+        {
+            facingDirection.x = -1;
+            facingDirection.y = 0;
+        }
     }
 
     public void MoveVeritcal(float axis)
     {
         axisY = axis;
+        if (axis > 0)
+        {
+            facingDirection.y = 1;
+            facingDirection.x = 0;
+        }
+        else if (axis < 0)
+        {
+            facingDirection.y = -1;
+            facingDirection.x = 0;
+        }
     }
 }
