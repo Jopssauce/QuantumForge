@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class CharacterActions : MonoBehaviour
 {
+    public enum Actions
+    {
+        Move,
+        Pickup,
+        PlaceDown
+    }
+
     Character character;
     public float rayDistance = 1;
-    public Item itemInRange;
+
     public Station stationInRange;
+    public StationOutput outputInRange;
+    public StationInput inputInRange;
 
     RaycastHit2D[] hit;
     Ray2D ray;
@@ -20,31 +29,70 @@ public class CharacterActions : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (outputInRange != null)
+            {
+                if (outputInRange.itemInfo != null)
+                {
+                    PickUp(outputInRange);
+                    return;
+                }
+            }
+            if (inputInRange != null)
+            {
+                if (inputInRange.itemInfo == null)
+                {
+                    PlaceDown(inputInRange);
+                    return;
+                }
+            }
+        }
+
         RaycastHit2D[] hit;
         ray = new Ray2D(transform.position, character.characterController.facingDirection);
         hit = Physics2D.RaycastAll(ray.origin, ray.direction, rayDistance);
+        if (hit.Length > 0)
+        {
+            foreach (var result in hit)
+            {
+                if (result.collider.GetComponent<StationOutput>() != null)
+                {
+                    outputInRange = result.collider.GetComponent<StationOutput>();
+                }
+                else if(result.collider.GetComponent<StationInput>() != null)
+                {
+                    inputInRange = result.collider.GetComponent<StationInput>();
+                }
+            }
+        }
+        else
+        {
+            outputInRange = null;
+            inputInRange = null;
+        }
     }
 
-    public enum Actions
+ 
+    public void PickUp(StationOutput station)
     {
-        Move,
-        Pickup,
-        PlaceDown
+        if (station.itemInfo != null)
+        {
+            Item item = station.itemInfo;
+            station.itemInfo = null;
+            station.spriteRenderer.sprite = null;
+
+            character.items.Add(item);
+        }
     }
 
-    public void PickUp(Item item)
+    public void PlaceDown(StationInput station)
     {
-        character.RecordPickUp(item);
-    }
-
-    public void PlaceDown(Item item)
-    {
-        character.RecordPlaceDown(item);
-    }
-
-    public void Insert(Item item, Station station)
-    {
-        character.RecordInsert(item, station);
+        if (character.items.Count > 0)
+        {
+            station.InputItem(character.items[0]);
+            character.items.RemoveAt(0);
+        }
     }
 
     public void OnDrawGizmos()

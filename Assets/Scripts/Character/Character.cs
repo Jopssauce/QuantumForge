@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     [HideInInspector]
     public CharacterController2D characterController;
+    public CharacterActions characterActions;
 
     public bool isRecording;
     public bool isRewinding;
@@ -25,6 +26,7 @@ public class Character : MonoBehaviour
     {
         index = 0;
         characterController = GetComponent<CharacterController2D>();
+        characterActions = GetComponent<CharacterActions>();
     }
 
     private void Update()
@@ -66,10 +68,21 @@ public class Character : MonoBehaviour
         {
             if (index > 0)
             {
+                //Rewind Movement
                 CharacterAction action = actions[index];
                 transform.position = action.position;
                 characterController.facingDirection = action.facingDirection;
                 index--;
+                //Reverse Pickup
+                if (action.action == CharacterActions.Actions.Pickup)
+                {
+                    //Do Placedown
+                }
+                if (action.action == CharacterActions.Actions.PlaceDown)
+                {
+                    //Do Pickup
+
+                }
             }
             else
             {
@@ -86,7 +99,17 @@ public class Character : MonoBehaviour
                 transform.position = action.position;
                 characterController.facingDirection = action.facingDirection;
                 index++;
+
+                if (action.action == CharacterActions.Actions.Pickup)
+                {
+                    characterActions.PickUp(characterActions.outputInRange);
+                }
+                if (action.action == CharacterActions.Actions.PlaceDown)
+                {
+
+                }
             }
+
             else
             {
                 isPlaying = false;
@@ -122,7 +145,9 @@ public class Character : MonoBehaviour
 
     public void RecordPickUp(Item item)
     {
-
+        CharacterAction action = new CharacterAction();
+        action.SetAction(CharacterActions.Actions.Pickup);
+        actions.Add(action);
     }
 
     public void RecordPlaceDown(Item item)
