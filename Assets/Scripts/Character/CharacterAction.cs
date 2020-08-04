@@ -4,12 +4,18 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterAction
 {
-    public CharacterActions.Actions action;
+    public enum Actions
+    {
+        Move,
+        Interact
+    }
+
+    public Actions action;
     //Movement
     public Vector2 position;
     public Vector2 facingDirection;
 
-    public void SetAction(CharacterActions.Actions action)
+    public void SetAction(Actions action)
     {
         this.action = action;
     }

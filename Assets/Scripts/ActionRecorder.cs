@@ -4,15 +4,145 @@ using UnityEngine;
 
 public class ActionRecorder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Character currentPlayer;
+    [SerializeField]
+    private Character characterPrefab;
+    private CharacterController2D characterController;
+
+    public float maxRecordTime = 3f;
+    public bool isRecording;
+    public bool isRewinding;
+    public bool isPlaying;
+    public int totalSteps;
+
+    int index;
+
+    private List<CharacterAction> actions = new List<CharacterAction>();
+
+    private void Awake()
     {
-        
+        index = 0;
+        characterController = currentPlayer.GetComponent<CharacterController2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Record();
+        }
+        if (Input.GetKeyDown(KeyCode.O) && !isRecording)
+        {
+            RewindRecording();
+        }
+        if (Input.GetKeyDown(KeyCode.P) && !isRecording)
+        {
+            PlayRecording();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 ||
+            Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0)
+        {
+            if (isRecording)
+            {
+                RecordMovement();
+            }
+        }
+
+        if (isRecording)
+        {
+            if (actions.Count >= totalSteps)
+            {
+                isRecording = false;
+            }
+        }
+
+        if (isRewinding)
+        {
+            if (index > 0)
+            {
+                //Rewind Movement
+                CharacterAction action = actions[index];
+                currentPlayer.transform.position = action.position;
+                characterController.facingDirection = action.facingDirection;
+                index--;
+
+                if (action.action == CharacterAction.Actions.Interact)
+                {
+                    currentPlayer.Interact(currentPlayer.interactable);
+                }
+            }
+            else
+            {
+                isRewinding = false;
+            }
+
+        }
+
+        if (isPlaying)
+        {
+            if (index < actions.Count)
+            {
+                CharacterAction action = actions[index];
+                currentPlayer.transform.position = action.position;
+                characterController.facingDirection = action.facingDirection;
+                index++;
+
+                if (action.action == CharacterAction.Actions.Interact)
+                {
+                    currentPlayer.Interact(currentPlayer.interactable);
+                }
+            }
+
+            else
+            {
+                isPlaying = false;
+            }
+
+        }
+    }
+
+    public void RewindRecording()
+    {
+        isRewinding = true;
+        index = actions.Count - 1;
+    }
+
+    public void PlayRecording()
+    {
+        isPlaying = true;
+        index = 0;
+    }
+
+    public void Record()
+    {
+        isRecording = !isRecording;
+        totalSteps = Mathf.RoundToInt(maxRecordTime / Time.fixedDeltaTime);
+    }
+
+    public void RecordMovement()
+    {
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            action.SetAction(CharacterAction.Actions.Move);
+            action.SetMovement(currentPlayer.transform.position, characterController.facingDirection);
+            actions.Add(action);
+        }
+
+    }
+
+    public void RecordInteract(Interactable interactable)
+    {
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            action.SetAction(CharacterAction.Actions.Interact);
+            action.SetMovement(currentPlayer.transform.position, characterController.facingDirection);
+            actions.Add(action);
+        }
     }
 }
