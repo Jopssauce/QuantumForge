@@ -34,32 +34,37 @@ public class ActionRecorder : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if(!isRecording)Record();
-            else
-            {
-               StopRecording();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.O) && !isRecording)
-        {
-            //RewindRecording();
-            //Replace with Reset
-        }
-        if (Input.GetKeyDown(KeyCode.P) && !isRecording)
-        {
-            PlayAllRecordings();
-        }
-        if (Input.GetKeyDown(KeyCode.Return) && isRecording)
-        {
-            StopRecording();
-            SaveRecording();
-        }
-        if (Input.GetKeyDown(KeyCode.F2) && !isRecording)
-        {
-            ResetRecorder();
-        }
+        ////Record and Play
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    if (!isRecording)
+        //    {
+        //        PlayAllRecordings();
+        //        Record();
+        //    }
+        //    else
+        //    {
+        //        StopRecording();
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.O) && !isRecording)
+        //{
+        //    //RewindRecording();
+        //    //Replace with Reset
+        //}
+        //if (Input.GetKeyDown(KeyCode.P) && !isRecording)
+        //{
+        //    PlayAllRecordings();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Return) && isRecording)
+        //{
+        //    StopRecording();
+        //    SaveRecording();
+        //}
+        //if (Input.GetKeyDown(KeyCode.F2) && !isRecording)
+        //{
+        //    ResetRecorder();
+        //}
     }
 
     private void FixedUpdate()

@@ -27,6 +27,18 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        //Save and Reset
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!actionRecorder.isPlaying)
+            {
+                actionRecorder.StopPlayback();
+                actionRecorder.SaveRecording();
+                actionRecorder.isPlaying = false;
+                sceneController.ResetLevel("Main");
+            }
+        }
+        //Reset
         if (Input.GetKeyDown(KeyCode.F3))
         {
             if (!actionRecorder.isPlaying)
@@ -34,6 +46,19 @@ public class GameController : MonoBehaviour
                 actionRecorder.StopPlayback();
                 actionRecorder.isPlaying = false;
                 sceneController.ResetLevel("Main");
+            }
+        }
+        //Record and Play
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!actionRecorder.isRecording)
+            {
+                actionRecorder.PlayAllRecordings();
+                actionRecorder.Record();
+            }
+            else
+            {
+                actionRecorder.StopRecording();
             }
         }
     }
