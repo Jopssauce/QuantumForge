@@ -7,8 +7,7 @@ public class CharacterActions : MonoBehaviour
     public enum Actions
     {
         Move,
-        Pickup,
-        PlaceDown
+        Interact
     }
 
     Character character;
@@ -63,6 +62,7 @@ public class CharacterActions : MonoBehaviour
     public void Interact(Interactable interactable)
     {
         interactable.Interact(character);
+        character.RecordInteract(interactable);
     }
  
     //public void TakeItem(StationIO station)

@@ -73,16 +73,10 @@ public class Character : MonoBehaviour
                 transform.position = action.position;
                 characterController.facingDirection = action.facingDirection;
                 index--;
-                //Reverse Pickup
-                if (action.action == CharacterActions.Actions.Pickup)
+
+                if (action.action == CharacterActions.Actions.Interact)
                 {
-                    //Do Placedown
-                    //characterActions.Input(characterActions.inputInRange);
-                }
-                if (action.action == CharacterActions.Actions.PlaceDown)
-                {
-                    //Do Pickup
-                    //characterActions.TakeItem(characterActions.outputInRange);
+                    characterActions.Interact(characterActions.interactable);
                 }
             }
             else
@@ -101,13 +95,9 @@ public class Character : MonoBehaviour
                 characterController.facingDirection = action.facingDirection;
                 index++;
 
-                if (action.action == CharacterActions.Actions.Pickup)
+                if (action.action == CharacterActions.Actions.Interact)
                 {
-                    //characterActions.TakeItem(characterActions.outputInRange);
-                }
-                if (action.action == CharacterActions.Actions.PlaceDown)
-                {
-                    //characterActions.Input(characterActions.inputInRange);
+                    characterActions.Interact(characterActions.interactable);
                 }
             }
 
@@ -161,25 +151,16 @@ public class Character : MonoBehaviour
         
     }
 
-    public void RecordPickUp(Item item)
+    public void RecordInteract(Interactable interactable)
     {
         if (isRecording)
         {
             CharacterAction action = new CharacterAction();
-            //action.SetAction(CharacterActions.Actions.Pickup);
+            action.SetAction(CharacterActions.Actions.Interact);
             action.SetMovement(transform.position, characterController.facingDirection);
             actions.Add(action);
         }
     }
 
-    public void RecordPlaceDown(Item item)
-    {
-        if (isRecording)
-        {
-            CharacterAction action = new CharacterAction();
-            //action.SetAction(CharacterActions.Actions.PlaceDown);
-            action.SetMovement(transform.position, characterController.facingDirection);
-            actions.Add(action);
-        }
-    }
+  
 }
