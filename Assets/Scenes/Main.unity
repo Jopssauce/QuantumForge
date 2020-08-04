@@ -778,7 +778,6 @@ GameObject:
   m_Component:
   - component: {fileID: 789386528}
   - component: {fileID: 789386526}
-  - component: {fileID: 789386527}
   - component: {fileID: 789386525}
   - component: {fileID: 789386529}
   - component: {fileID: 789386531}
@@ -819,28 +818,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
-  characterActions: {fileID: 0}
-  isRecording: 0
-  isRewinding: 0
-  isPlaying: 0
+  actionRecorder: {fileID: 1270071221}
   health: 20
-  maxRecordTime: 3
-  totalSteps: 0
-  items: []
---- !u!114 &789386527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789386524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55e4ca7e29a13c458e1f9badb5117b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   rayDistance: 1
   interactable: {fileID: 0}
+  items: []
 --- !u!4 &789386528
 Transform:
   m_ObjectHideFlags: 0
@@ -1081,6 +1063,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbff657edd45054ab46e7d354b9e1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPlayer: {fileID: 789386526}
+  characterPrefab: {fileID: 0}
+  maxRecordTime: 3
+  isRecording: 0
+  isRewinding: 0
+  isPlaying: 0
+  totalSteps: 0
 --- !u!1 &1617235047
 GameObject:
   m_ObjectHideFlags: 0
