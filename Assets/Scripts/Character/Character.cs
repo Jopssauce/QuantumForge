@@ -24,13 +24,7 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (interactable != null)
-            {
-                Interact(interactable);
-            }
-        }
+        
 
         RaycastHit2D[] hit;
         ray = new Ray2D(transform.position, characterController.facingDirection);
@@ -55,7 +49,7 @@ public class Character : MonoBehaviour
     public void Interact(Interactable interactable)
     {
         interactable.Interact(this);
-        actionRecorder.RecordInteract(interactable);
+        
     }
 
     //Gives Player item to an interactable

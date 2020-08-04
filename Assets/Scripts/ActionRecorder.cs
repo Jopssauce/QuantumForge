@@ -6,7 +6,7 @@ public class ActionRecorder : MonoBehaviour
 {
     public Character currentPlayer;
     [SerializeField]
-    private Character characterPrefab;
+    private Character characterPrefab = null;
     private CharacterController2D characterController;
 
     public float maxRecordTime = 3f;
@@ -15,13 +15,11 @@ public class ActionRecorder : MonoBehaviour
     public bool isPlaying;
     public int totalSteps;
 
-    int index;
-
     private List<CharacterAction> actions = new List<CharacterAction>();
+    private List<List<CharacterAction>> actionsList = new List<List<CharacterAction>>();
 
     private void Awake()
     {
-        index = 0;
         characterController = currentPlayer.GetComponent<CharacterController2D>();
     }
 
@@ -33,25 +31,21 @@ public class ActionRecorder : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O) && !isRecording)
         {
-            RewindRecording();
+            //RewindRecording();
+            //Replace with Reset
         }
         if (Input.GetKeyDown(KeyCode.P) && !isRecording)
         {
-            PlayRecording();
+            PlayAllRecordings();
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && !isRecording)
+        {
+            SaveRecording();
         }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 ||
-            Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0)
-        {
-            if (isRecording)
-            {
-                RecordMovement();
-            }
-        }
-
         if (isRecording)
         {
             if (actions.Count >= totalSteps)
@@ -59,68 +53,85 @@ public class ActionRecorder : MonoBehaviour
                 isRecording = false;
             }
         }
+    }
 
-        if (isRewinding)
+
+    public void RewindRecording()
+    {
+        isRewinding = true;
+        StartCoroutine(RewindRecording(actions, currentPlayer));
+    }
+
+    public void PlayAllRecordings()
+    {
+        isPlaying = true;
+        for (int i = 0; i < actionsList.Count; i++)
         {
-            if (index > 0)
-            {
-                //Rewind Movement
-                CharacterAction action = actions[index];
-                currentPlayer.transform.position = action.position;
-                characterController.facingDirection = action.facingDirection;
-                index--;
-
-                if (action.action == CharacterAction.Actions.Interact)
-                {
-                    currentPlayer.Interact(currentPlayer.interactable);
-                }
-            }
-            else
-            {
-                isRewinding = false;
-            }
-
+            Character character;
+            character = Instantiate(characterPrefab, characterPrefab.transform.position, characterPrefab.transform.rotation);
+            StartCoroutine(PlayRecording(actionsList[i], character));
         }
+    }
 
-        if (isPlaying)
+    public IEnumerator PlayRecording(List<CharacterAction> actions, Character character)
+    {
+        int index = 0;
+        CharacterController2D characterController = character.GetComponent<CharacterController2D>();
+        while (index < actions.Count)
         {
             if (index < actions.Count)
             {
                 CharacterAction action = actions[index];
-                currentPlayer.transform.position = action.position;
+                character.transform.position = action.position;
                 characterController.facingDirection = action.facingDirection;
                 index++;
 
                 if (action.action == CharacterAction.Actions.Interact)
                 {
-                    currentPlayer.Interact(currentPlayer.interactable);
+                    character.Interact(character.interactable);
                 }
             }
-
-            else
-            {
-                isPlaying = false;
-            }
-
+            yield return new WaitForFixedUpdate();
         }
+        isPlaying = false;
     }
 
-    public void RewindRecording()
+    public IEnumerator RewindRecording(List<CharacterAction> actions, Character character)
     {
-        isRewinding = true;
-        index = actions.Count - 1;
-    }
+        int index = actions.Count - 1;
+        CharacterController2D characterController = character.GetComponent<CharacterController2D>();
+        while (index > 0)
+        {
+            if (index > 0)
+            {
+                //Rewind Movement
+                CharacterAction action = actions[index];
+                character.transform.position = action.position;
+                characterController.facingDirection = action.facingDirection;
+                index--;
 
-    public void PlayRecording()
-    {
-        isPlaying = true;
-        index = 0;
+                if (action.action == CharacterAction.Actions.Interact)
+                {
+                    character.Interact(character.interactable);
+                }
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        isRewinding = false;
+
     }
 
     public void Record()
     {
         isRecording = !isRecording;
         totalSteps = Mathf.RoundToInt(maxRecordTime / Time.fixedDeltaTime);
+    }
+
+    public void SaveRecording()
+    {
+        List<CharacterAction> newAction = new List<CharacterAction>(actions);
+        actionsList.Add(newAction);
+        actions.Clear();
     }
 
     public void RecordMovement()
