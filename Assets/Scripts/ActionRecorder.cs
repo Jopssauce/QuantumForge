@@ -16,6 +16,10 @@ public class ActionRecorder : MonoBehaviour
     public bool isPlaying;
     public int totalSteps;
 
+    public int coroutineIndex;
+    IEnumerator currentPlayingCoroutine;
+    IEnumerator coroutineQueue;
+
     private List<CharacterAction> actions = new List<CharacterAction>();
     private List<List<CharacterAction>> actionsList = new List<List<CharacterAction>>();
 
@@ -83,15 +87,32 @@ public class ActionRecorder : MonoBehaviour
         StartCoroutine(RewindRecording(actions, currentPlayer));
     }
 
+    public void StopPlayback()
+    {
+        if (currentPlayingCoroutine != null)
+        {
+            StopCoroutine(currentPlayingCoroutine);
+            isPlaying = false;
+        }
+        if (coroutineQueue != null)
+        {
+            StopCoroutine(coroutineQueue);
+            isPlaying = false;
+        }
+    }
+
     public void PlayAllRecordings()
     {
         isPlaying = true;
-        for (int i = 0; i < actionsList.Count; i++)
-        {
-            Character character;
-            character = gameController.CreateCharacter("Main");
-            StartCoroutine(PlayRecording(actionsList[i], character));
-        }
+        //for (int i = 0; i < actionsList.Count; i++)
+        //{
+        //    Character character;
+        //    character = gameController.CreateCharacter("Main");
+        //      currentPlayingCoroutine = PlayRecording(actionsList[i], character);
+        //    StartCoroutine(currentPlayingCoroutine);
+        //}
+        coroutineQueue = PlayRecordingsStepbyStep();
+        StartCoroutine(coroutineQueue);
     }
 
     public IEnumerator PlayRecording(List<CharacterAction> actions, Character character)
@@ -115,6 +136,27 @@ public class ActionRecorder : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         isPlaying = false;
+        currentPlayingCoroutine = null;
+    }
+
+    public IEnumerator PlayRecordingsStepbyStep()
+    {
+        coroutineIndex = 0;
+        while (coroutineIndex < actionsList.Count)
+        {
+            if (currentPlayingCoroutine == null)
+            {
+                Character character;
+                character = gameController.CreateCharacter("Main");
+                currentPlayingCoroutine = PlayRecording(actionsList[coroutineIndex], character);
+                StartCoroutine(currentPlayingCoroutine);
+                coroutineIndex++;
+            }
+            Debug.Log(true);
+            yield return new WaitForFixedUpdate();
+        }
+        coroutineQueue = null;
+        yield break;
     }
 
     public IEnumerator RewindRecording(List<CharacterAction> actions, Character character)

@@ -28,8 +28,12 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F3))
         {
-            actionRecorder.StopAllCoroutines();
-            sceneController.ResetLevel("Main");
+            if (!actionRecorder.isPlaying)
+            {
+                actionRecorder.StopPlayback();
+                actionRecorder.isPlaying = false;
+                sceneController.ResetLevel("Main");
+            }
         }
     }
 
