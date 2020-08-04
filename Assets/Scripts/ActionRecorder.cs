@@ -152,7 +152,6 @@ public class ActionRecorder : MonoBehaviour
                 StartCoroutine(currentPlayingCoroutine);
                 coroutineIndex++;
             }
-            Debug.Log(true);
             yield return new WaitForFixedUpdate();
         }
         coroutineQueue = null;
