@@ -16,7 +16,7 @@ public class StationInput : StationIO
         {
             GiveItem(itemInfo, character);
         }
-        else if (character.items.Count > 0 && station.item == null)
+        else if (character.items.Count > 0 && itemInfo == null)
         {
             InputItem(character.GiveCharacterItem());
         }
@@ -24,13 +24,15 @@ public class StationInput : StationIO
 
     public void InputItem(Item item)
     {
-        station.item = item;
+        //station.item = item;
+        station.items.Add(item);
+        itemInfo = item;
+        DisplayItem(item);
         onInput?.Invoke();
     }
 
     public void DisplayItem(Item item)
     {
-        itemInfo = item;
         itemSpriteRenderer.sprite = item.sprite;
     }
 

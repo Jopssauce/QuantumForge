@@ -23,7 +23,8 @@ public class StationOutput : StationIO
     {
         //Outputs result item
         resultItemInfo = resultItem;
-        station.item = null;
+        //station.item = null;
+        station.items.Clear();
         DisplayItem(resultItem);
         onOutput?.Invoke();
     }
@@ -43,5 +44,6 @@ public class StationOutput : StationIO
     {
         itemSpriteRenderer.sprite = null;
         resultItemInfo = null;
+        station.resultItem = null;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Station : Interactable
@@ -7,34 +8,55 @@ public class Station : Interactable
     [Header("Result Item")]
     public Item resultItem;
 
-    public Item item;
-    [SerializeField]
-    private Item itemRecipe = null;
-    public StationInput input;
+    //public Item item;
+    //[SerializeField]
+    //private Item itemRecipe = null;
+    //public StationInput input;
     public StationOutput output;
 
     public List<Item> items;
     [SerializeField]
-    private List<Item> itemRecipes;
+    private List<ItemRecipe> itemRecipes = new List<ItemRecipe>();
     public List<StationInput> inputs;
-    public List<StationOutput> outputs;
+    //public List<StationOutput> outputs;
 
-    public bool IsItemCorrect()
-    {
-        if (item.id == itemRecipe.id)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //For Single Components
+    //public bool IsItemCorrect()
+    //{
+    //    for (int i = 0; i < itemRecipes.Count; i++)
+    //    {
+    //        if (item.id == itemRecipes[i].component.id)
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            return false;
+    //        }
+    //    }
+    //    return false;
+    //}
 
-    public bool AreItemsCorrect()
+    public ItemRecipe FindMatchingRecipe()
     {
-        //Check list
-        return false;
+        ItemRecipe itemRecipe = null;
+        for (int i = 0; i < itemRecipes.Count; i++)
+        {
+            itemRecipe = itemRecipes[i];
+            int index = 0;
+            for (int w = 0; w < items.Count; w++)
+            {
+                if (itemRecipe.components.Any(a => a.id == items[i].id))
+                {
+                    index++;
+                }
+                if (index >= items.Count)
+                {
+                    return itemRecipe;
+                }
+            }
+        }
+        return null;
     }
 
 }
