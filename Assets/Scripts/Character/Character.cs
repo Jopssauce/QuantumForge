@@ -119,6 +119,18 @@ public class Character : MonoBehaviour
         }
     }
 
+    //Gives Player item to an interactable
+    public Item GiveCharacterItem()
+    {
+        if (items.Count > 0)
+        {
+            Item item = items[0];
+            items.RemoveAt(0);
+            return item;
+        }
+        return null;
+    }
+
     public void RewindRecording()
     {
         isRewinding = true;

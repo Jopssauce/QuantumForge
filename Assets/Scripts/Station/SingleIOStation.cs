@@ -6,13 +6,25 @@ public class SingleIOStation : Station
 {
     private void Awake()
     {
-        input.onInput += DisplayItem;
+        input.onInput += CreateResult;
     }
 
-    public void DisplayItem()
+    public void CreateResult()
     {
-        output.itemInfo = input.itemInfo;
-        input.itemInfo = null;
-        output.OutputItem();
+        if (IsItemCorrect())
+        {
+            OutputResult();
+        }
+        else
+        {
+            //Return Item
+            input.DisplayItem(item);
+            item = null;
+        }
+    }
+
+    public void OutputResult()
+    {
+        output.OutputItem(resultItem);
     }
 }

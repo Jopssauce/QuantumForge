@@ -32,7 +32,7 @@ public class CharacterActions : MonoBehaviour
 
     private void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (interactable != null)
             {
@@ -62,7 +62,7 @@ public class CharacterActions : MonoBehaviour
 
     public void Interact(Interactable interactable)
     {
-        
+        interactable.Interact(character);
     }
  
     //public void TakeItem(StationIO station)

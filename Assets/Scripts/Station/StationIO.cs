@@ -11,12 +11,8 @@ public class StationIO : Interactable
         Both
     }
     public IOType stationIOType;
-    public SpriteRenderer spriteRenderer;
-
-    public delegate void OnGiveItem();
-    public event OnGiveItem onGiveItem;
+    public SpriteRenderer itemSpriteRenderer;
 
     public Station station;
-    public Item itemInfo;
 
 }
