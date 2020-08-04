@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f18b5dae8cfff047a9d993053337d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 7
+  maxVelocity: 5
   maxAcceleration: 100
   currentVelocity: {x: 0, y: 0}
   facingDirection: {x: 0, y: 0}
@@ -144,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!1 &8476612379563324538
 GameObject:

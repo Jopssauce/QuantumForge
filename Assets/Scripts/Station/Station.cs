@@ -46,11 +46,11 @@ public class Station : Interactable
             int index = 0;
             for (int w = 0; w < items.Count; w++)
             {
-                if (itemRecipe.components.Any(a => a.id == items[i].id))
+                if (itemRecipe.components.Any(a => a.id == items[w].id))
                 {
                     index++;
                 }
-                if (index >= items.Count)
+                if (index >= itemRecipe.components.Count)
                 {
                     return itemRecipe;
                 }

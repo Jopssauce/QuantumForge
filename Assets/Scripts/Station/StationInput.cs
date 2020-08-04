@@ -45,6 +45,7 @@ public class StationInput : StationIO
     public void ClearInput()
     {
         itemSpriteRenderer.sprite = null;
+        station.items.Remove(itemInfo);
         itemInfo = null;
     }
 }

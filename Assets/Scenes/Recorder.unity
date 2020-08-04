@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 0}
+  gameController: {fileID: 0}
   maxRecordTime: 5
   isRecording: 0
   isRewinding: 0

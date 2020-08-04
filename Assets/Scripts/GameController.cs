@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     {
         sceneController = SceneController.instance;
         actionRecorder = ActionRecorder.instance;
+        actionRecorder.gameController = this;
         actionRecorder.LookAt(player);
     }
 

@@ -34,11 +34,14 @@ public class Character : MonoBehaviour
                 {
                     interactable = result.collider.GetComponent<Interactable>();
                 }
+                else
+                {
+                    interactable = null;
+                }
             }
         }
         else
         {
-            interactable = null;
             interactable = null;
         }
     }

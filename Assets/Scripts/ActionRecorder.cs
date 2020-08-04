@@ -8,7 +8,7 @@ public class ActionRecorder : MonoBehaviour
 
     public Character currentPlayer;
     private CharacterController2D characterController;
-    GameController gameController;
+    public GameController gameController;
 
     public float maxRecordTime = 3f;
     public bool isRecording;
@@ -16,7 +16,6 @@ public class ActionRecorder : MonoBehaviour
     public bool isPlaying;
     public int totalSteps;
 
-    public int coroutineIndex;
     IEnumerator currentPlayingCoroutine;
     IEnumerator coroutineQueue;
 
@@ -103,16 +102,20 @@ public class ActionRecorder : MonoBehaviour
 
     public void PlayAllRecordings()
     {
-        isPlaying = true;
-        //for (int i = 0; i < actionsList.Count; i++)
-        //{
-        //    Character character;
-        //    character = gameController.CreateCharacter("Main");
-        //      currentPlayingCoroutine = PlayRecording(actionsList[i], character);
-        //    StartCoroutine(currentPlayingCoroutine);
-        //}
-        coroutineQueue = PlayRecordingsStepbyStep();
-        StartCoroutine(coroutineQueue);
+        if (actionsList.Count > 0)
+        {
+            isPlaying = true;
+            //for (int i = 0; i < actionsList.Count; i++)
+            //{
+            //    Character character;
+            //    character = gameController.CreateCharacter("Main");
+            //      currentPlayingCoroutine = PlayRecording(actionsList[i], character);
+            //    StartCoroutine(currentPlayingCoroutine);
+            //}
+            coroutineQueue = PlayRecordingsStepbyStep();
+            StartCoroutine(coroutineQueue);
+        }
+        
     }
 
     public IEnumerator PlayRecording(List<CharacterAction> actions, Character character)
@@ -141,7 +144,7 @@ public class ActionRecorder : MonoBehaviour
 
     public IEnumerator PlayRecordingsStepbyStep()
     {
-        coroutineIndex = 0;
+        int coroutineIndex = 0;
         while (coroutineIndex < actionsList.Count)
         {
             if (currentPlayingCoroutine == null)

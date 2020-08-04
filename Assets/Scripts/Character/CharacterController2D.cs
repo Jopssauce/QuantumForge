@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
         rgBody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector2 input = new Vector2();
         input.x = axisX;
