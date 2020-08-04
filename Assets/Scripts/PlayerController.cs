@@ -6,6 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController2D characterController2D;
     public Character character;
+    public ActionRecorder actionRecorder;
+
+    private void Start()
+    {
+        actionRecorder = ActionRecorder.instance;
+    }
 
     private void Update()
     {
@@ -17,7 +23,7 @@ public class PlayerController : MonoBehaviour
             if (character.interactable != null)
             {
                 character.Interact(character.interactable);
-                character.actionRecorder.RecordInteract(character.interactable);
+                actionRecorder.RecordInteract(character.interactable);
             }
         }
     }
@@ -28,9 +34,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 ||
             Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0)
         {
-            if (character.actionRecorder.isRecording)
+            if (actionRecorder.isRecording)
             {
-                character.actionRecorder.RecordMovement();
+                actionRecorder.RecordMovement();
             }
         }
     }

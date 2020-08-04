@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 429662418}
   - component: {fileID: 429662420}
   - component: {fileID: 429662419}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 789386529}
   - component: {fileID: 789386531}
   - component: {fileID: 789386530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
-  actionRecorder: {fileID: 1270071221}
   health: 20
   rayDistance: 1
   interactable: {fileID: 0}
@@ -1085,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController2D: {fileID: 789386525}
   character: {fileID: 789386526}
+  actionRecorder: {fileID: 0}
 --- !u!61 &789386530
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1483,7 +1483,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1270071220}
   - component: {fileID: 1270071219}
-  - component: {fileID: 1270071221}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -1503,6 +1502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e0deab9b3177b4985fbe9cad118df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 789386526}
+  characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
+    type: 3}
 --- !u!4 &1270071220
 Transform:
   m_ObjectHideFlags: 0
@@ -1517,26 +1519,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1270071221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270071218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fbff657edd45054ab46e7d354b9e1de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPlayer: {fileID: 789386526}
-  characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
-    type: 3}
-  maxRecordTime: 5
-  isRecording: 0
-  isRewinding: 0
-  isPlaying: 0
-  totalSteps: 0
 --- !u!1 &1280227313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2028368043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item Collection
   m_TagString: Untagged
   m_Icon: {fileID: 0}

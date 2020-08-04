@@ -1,18 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameController instance;
+
+    public Character player;
+    [SerializeField]
+    private Character characterPrefab = null;
+    SceneController sceneController;
+    ActionRecorder actionRecorder;
+    private void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        sceneController = SceneController.instance;
+        actionRecorder = ActionRecorder.instance;
+        actionRecorder.LookAt(player);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            actionRecorder.StopAllCoroutines();
+            sceneController.ResetLevel("Main");
+        }
+    }
+
+    //Characters character into a specific scene
+    public Character CreateCharacter(string scene)
+    {
+        Character character = 
+            Instantiate(characterPrefab, characterPrefab.transform.position, characterPrefab.transform.rotation);
+        SceneManager.MoveGameObjectToScene(character.gameObject, SceneManager.GetSceneByName(scene));
+        return character;
+    }
+
+    
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3753517850599325553}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item Collection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7276830757643095818}
   - component: {fileID: 1543064916018554207}
   - component: {fileID: 2243959306595071400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
-  actionRecorder: {fileID: 0}
   health: 20
   rayDistance: 1
   interactable: {fileID: 0}
@@ -158,7 +157,7 @@ GameObject:
   - component: {fileID: 7547504522287582549}
   - component: {fileID: 363658180361056975}
   - component: {fileID: 3227207320232990364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

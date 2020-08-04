@@ -6,7 +6,6 @@ public class Character : MonoBehaviour
 {
     [HideInInspector]
     public CharacterController2D characterController;
-    public ActionRecorder actionRecorder;
 
     public float health = 20;
     public float rayDistance = 1;
@@ -24,8 +23,6 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        
-
         RaycastHit2D[] hit;
         ray = new Ray2D(transform.position, characterController.facingDirection);
         hit = Physics2D.RaycastAll(ray.origin, ray.direction, rayDistance);
@@ -48,8 +45,11 @@ public class Character : MonoBehaviour
 
     public void Interact(Interactable interactable)
     {
-        interactable.Interact(this);
-        
+        if (interactable == null)
+        {
+            Debug.Log(interactable, this);
+        }
+        interactable.Interact(this); 
     }
 
     //Gives Player item to an interactable

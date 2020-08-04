@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ActionRecorder : MonoBehaviour
 {
+    public static ActionRecorder instance;
+
     public Character currentPlayer;
-    [SerializeField]
-    private Character characterPrefab = null;
     private CharacterController2D characterController;
+    GameController gameController;
 
     public float maxRecordTime = 3f;
     public bool isRecording;
@@ -20,14 +21,23 @@ public class ActionRecorder : MonoBehaviour
 
     private void Awake()
     {
-        characterController = currentPlayer.GetComponent<CharacterController2D>();
+        instance = this;
+    }
+
+    private void Start()
+    {
+        gameController = GameController.instance;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Record();
+            if(!isRecording)Record();
+            else
+            {
+               StopRecording();
+            }
         }
         if (Input.GetKeyDown(KeyCode.O) && !isRecording)
         {
@@ -38,9 +48,14 @@ public class ActionRecorder : MonoBehaviour
         {
             PlayAllRecordings();
         }
-        if (Input.GetKeyDown(KeyCode.Return) && !isRecording)
+        if (Input.GetKeyDown(KeyCode.Return) && isRecording)
         {
+            StopRecording();
             SaveRecording();
+        }
+        if (Input.GetKeyDown(KeyCode.F2) && !isRecording)
+        {
+            ResetRecorder();
         }
     }
 
@@ -55,6 +70,12 @@ public class ActionRecorder : MonoBehaviour
         }
     }
 
+    //Looks at the set player
+    public void LookAt(Character player)
+    {
+        currentPlayer = player;
+        characterController = player.GetComponent<CharacterController2D>();
+    }
 
     public void RewindRecording()
     {
@@ -68,7 +89,7 @@ public class ActionRecorder : MonoBehaviour
         for (int i = 0; i < actionsList.Count; i++)
         {
             Character character;
-            character = Instantiate(characterPrefab, characterPrefab.transform.position, characterPrefab.transform.rotation);
+            character = gameController.CreateCharacter("Main");
             StartCoroutine(PlayRecording(actionsList[i], character));
         }
     }
@@ -123,8 +144,13 @@ public class ActionRecorder : MonoBehaviour
 
     public void Record()
     {
-        isRecording = !isRecording;
+        isRecording = true;
         totalSteps = Mathf.RoundToInt(maxRecordTime / Time.fixedDeltaTime);
+    }
+
+    public void StopRecording()
+    {
+        isRecording = false;
     }
 
     public void SaveRecording()
@@ -155,5 +181,11 @@ public class ActionRecorder : MonoBehaviour
             action.SetMovement(currentPlayer.transform.position, characterController.facingDirection);
             actions.Add(action);
         }
+    }
+
+    public void ResetRecorder()
+    {
+        actions.Clear();
+        actionsList.Clear();
     }
 }
