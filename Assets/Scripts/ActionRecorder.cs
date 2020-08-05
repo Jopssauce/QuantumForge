@@ -22,7 +22,8 @@ public class ActionRecorder : MonoBehaviour
     IEnumerator coroutineQueue;
 
     private List<CharacterAction> actions = new List<CharacterAction>();
-    private List<List<CharacterAction>> actionsList = new List<List<CharacterAction>>();
+    public List<List<CharacterAction>> actionsList = new List<List<CharacterAction>>();
+    private List<IEnumerator> coroutines = new List<IEnumerator>();
 
     private void Awake()
     {
@@ -106,6 +107,13 @@ public class ActionRecorder : MonoBehaviour
             StopCoroutine(coroutineQueue);
             isPlaying = false;
         }
+        if (coroutines.Count > 0)
+        {
+            for (int i = 0; i < coroutines.Count; i++)
+            {
+                StopCoroutine(coroutines[i]);
+            }
+        }
     }
 
     public void PlayAllRecordings()
@@ -150,8 +158,10 @@ public class ActionRecorder : MonoBehaviour
         {
             Character character;
             character = gameController.CreateCharacter("Main");
-            currentPlayingCoroutine = PlayRecording(actionsList[i], character);
-            StartCoroutine(currentPlayingCoroutine);
+            IEnumerator cor;
+            cor = PlayRecording(actionsList[i], character);
+            coroutines.Add(cor);
+            StartCoroutine(cor);
         }
     }
 
@@ -216,6 +226,11 @@ public class ActionRecorder : MonoBehaviour
         actionsList.Add(newAction);
         actions.Clear();
         ResetSteps();
+    }
+
+    public void DeletePreviousRecording()
+    {
+        actionsList.RemoveAt(actionsList.Count);
     }
 
     public void RecordPosition()
