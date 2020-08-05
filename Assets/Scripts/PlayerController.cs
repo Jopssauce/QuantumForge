@@ -39,5 +39,13 @@ public class PlayerController : MonoBehaviour
                 actionRecorder.RecordMovement();
             }
         }
+        else if(Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0 ||
+                Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0)
+        {
+            if (actionRecorder.isRecording)
+            {
+                actionRecorder.RecordPosition();
+            }
+        }
     }
 }

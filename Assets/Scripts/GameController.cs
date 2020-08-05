@@ -23,6 +23,16 @@ public class GameController : MonoBehaviour
         actionRecorder = ActionRecorder.instance;
         actionRecorder.gameController = this;
         actionRecorder.LookAt(player);
+
+        if (!actionRecorder.isRecording)
+        {
+            actionRecorder.PlayAllRecordings();
+            actionRecorder.Record();
+        }
+        else
+        {
+            actionRecorder.StopRecording();
+        }
     }
 
     private void Update()

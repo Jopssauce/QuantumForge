@@ -15,6 +15,7 @@ public class ActionRecorder : MonoBehaviour
     public bool isRewinding;
     public bool isPlaying;
     public int totalSteps;
+    public int stepsIndex;
     public int stepsLeft;
 
     IEnumerator currentPlayingCoroutine;
@@ -35,7 +36,7 @@ public class ActionRecorder : MonoBehaviour
 
     private void Update()
     {
-        stepsLeft = Mathf.Abs(actions.Count - totalSteps);
+        stepsLeft = Mathf.Abs(stepsIndex - totalSteps);
         ////Record and Play
         //if (Input.GetKeyDown(KeyCode.R))
         //{
@@ -73,7 +74,7 @@ public class ActionRecorder : MonoBehaviour
     {
         if (isRecording)
         {
-            if (actions.Count >= totalSteps)
+            if (stepsIndex >= totalSteps)
             {
                 isRecording = false;
             }
@@ -214,9 +215,10 @@ public class ActionRecorder : MonoBehaviour
         List<CharacterAction> newAction = new List<CharacterAction>(actions);
         actionsList.Add(newAction);
         actions.Clear();
+        ResetSteps();
     }
 
-    public void RecordMovement()
+    public void RecordPosition()
     {
         if (isRecording)
         {
@@ -228,6 +230,18 @@ public class ActionRecorder : MonoBehaviour
 
     }
 
+    public void RecordMovement()
+    {
+        if (isRecording)
+        {
+            CharacterAction action = new CharacterAction();
+            action.SetAction(CharacterAction.Actions.Move);
+            action.SetMovement(currentPlayer.transform.position, characterController.facingDirection);
+            actions.Add(action);
+            stepsIndex++;
+        }
+    }
+
     public void RecordInteract(Interactable interactable)
     {
         if (isRecording)
@@ -236,12 +250,21 @@ public class ActionRecorder : MonoBehaviour
             action.SetAction(CharacterAction.Actions.Interact);
             action.SetMovement(currentPlayer.transform.position, characterController.facingDirection);
             actions.Add(action);
+            stepsIndex++;
         }
     }
 
     public void ResetRecorder()
     {
+        ResetSteps();
         actions.Clear();
         actionsList.Clear();
+    }
+
+    public void ResetSteps()
+    {
+        totalSteps = 0;
+        stepsIndex = 0;
+        stepsLeft = 0;
     }
 }
