@@ -72,6 +72,18 @@ public class GameController : MonoBehaviour
                 actionRecorder.StopRecording();
             }
         }
+        //Delete previous recording and reset
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            if (actionRecorder.actionsList.Count > 0)
+            {
+                actionRecorder.StopPlayback();
+                actionRecorder.DeletePreviousRecording();
+                actionRecorder.isPlaying = false;
+                actionRecorder.isRecording = false;
+                sceneController.ResetLevel("Main");
+            }
+        }
     }
 
     //Characters character into a specific scene

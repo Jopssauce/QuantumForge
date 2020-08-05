@@ -230,7 +230,7 @@ public class ActionRecorder : MonoBehaviour
 
     public void DeletePreviousRecording()
     {
-        actionsList.RemoveAt(actionsList.Count);
+        actionsList.RemoveAt(actionsList.Count - 1);
     }
 
     public void RecordPosition()
