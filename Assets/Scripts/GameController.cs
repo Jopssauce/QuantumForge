@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
                 actionRecorder.StopPlayback();
                 actionRecorder.SaveRecording();
                 actionRecorder.isPlaying = false;
+                actionRecorder.isRecording = false;
                 sceneController.ResetLevel("Main");
             }
         }

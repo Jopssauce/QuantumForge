@@ -15,6 +15,7 @@ public class ActionRecorder : MonoBehaviour
     public bool isRewinding;
     public bool isPlaying;
     public int totalSteps;
+    public int stepsLeft;
 
     IEnumerator currentPlayingCoroutine;
     IEnumerator coroutineQueue;
@@ -34,6 +35,7 @@ public class ActionRecorder : MonoBehaviour
 
     private void Update()
     {
+        stepsLeft = Mathf.Abs(actions.Count - totalSteps);
         ////Record and Play
         //if (Input.GetKeyDown(KeyCode.R))
         //{
@@ -110,15 +112,9 @@ public class ActionRecorder : MonoBehaviour
         if (actionsList.Count > 0)
         {
             isPlaying = true;
-            //for (int i = 0; i < actionsList.Count; i++)
-            //{
-            //    Character character;
-            //    character = gameController.CreateCharacter("Main");
-            //      currentPlayingCoroutine = PlayRecording(actionsList[i], character);
-            //    StartCoroutine(currentPlayingCoroutine);
-            //}
-            coroutineQueue = PlayRecordingsStepbyStep();
-            StartCoroutine(coroutineQueue);
+            PlayRecordingSimultaneously();
+            //coroutineQueue = PlayRecordingsStepbyStep();
+            //StartCoroutine(coroutineQueue);
         }
         
     }
@@ -145,6 +141,17 @@ public class ActionRecorder : MonoBehaviour
         }
         isPlaying = false;
         currentPlayingCoroutine = null;
+    }
+
+    public void PlayRecordingSimultaneously()
+    {
+        for (int i = 0; i < actionsList.Count; i++)
+        {
+            Character character;
+            character = gameController.CreateCharacter("Main");
+            currentPlayingCoroutine = PlayRecording(actionsList[i], character);
+            StartCoroutine(currentPlayingCoroutine);
+        }
     }
 
     public IEnumerator PlayRecordingsStepbyStep()
