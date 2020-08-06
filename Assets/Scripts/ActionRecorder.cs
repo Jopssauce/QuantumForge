@@ -9,6 +9,7 @@ public class ActionRecorder : MonoBehaviour
     public Character currentPlayer;
     private CharacterController2D characterController;
     public GameController gameController;
+    public LevelConfig levelConfig;
 
     public float maxRecordTime = 3f;
     public bool isRecording;
@@ -17,6 +18,8 @@ public class ActionRecorder : MonoBehaviour
     public int totalSteps;
     public int stepsIndex;
     public int stepsLeft;
+
+    public int currentRecords;
 
     IEnumerator currentPlayingCoroutine;
     IEnumerator coroutineQueue;
@@ -49,6 +52,13 @@ public class ActionRecorder : MonoBehaviour
                 isRecording = false;
             }
         }
+    }
+
+    public void LoadConfig(LevelConfig levelConfig)
+    {
+        this.levelConfig = levelConfig;
+        maxRecordTime = levelConfig.maxRecordTime;
+        currentRecords = levelConfig.recordAmount;
     }
 
     //Looks at the set player
@@ -187,6 +197,7 @@ public class ActionRecorder : MonoBehaviour
     public void StopRecording()
     {
         isRecording = false;
+        actions.Clear();
     }
 
     public void SaveRecording()

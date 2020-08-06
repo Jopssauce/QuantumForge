@@ -8,12 +8,15 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public string mainScene;
     public Character player;
+
     [SerializeField]
     private Character characterPrefab = null;
     [SerializeField]
-    private LevelConfig levelConfig;
+    private LevelConfig levelConfig = null;
+
     SceneController sceneController;
     ActionRecorder actionRecorder;
+
     private void Awake()
     {
         instance = this;
@@ -23,8 +26,15 @@ public class GameController : MonoBehaviour
     {
         sceneController = SceneController.instance;
         actionRecorder = ActionRecorder.instance;
+
         actionRecorder.gameController = this;
         actionRecorder.LookAt(player);
+
+        //If there is no level config or mismatching config
+        if (actionRecorder.levelConfig == null || levelConfig.levelId != actionRecorder.levelConfig.levelId)
+        {
+            actionRecorder.LoadConfig(levelConfig);
+        }
 
         if (!actionRecorder.isRecording)
         {
@@ -42,14 +52,7 @@ public class GameController : MonoBehaviour
         //Save and Reset
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (!actionRecorder.isPlaying)
-            {
-                actionRecorder.StopPlayback();
-                actionRecorder.SaveRecording();
-                actionRecorder.isPlaying = false;
-                actionRecorder.isRecording = false;
-                sceneController.ResetLevel(mainScene);
-            }
+            SaveReset();
         }
         //Reset
         if (Input.GetKeyDown(KeyCode.F3))
@@ -64,27 +67,12 @@ public class GameController : MonoBehaviour
         //Record and Play
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (!actionRecorder.isRecording)
-            {
-                actionRecorder.PlayAllRecordings();
-                actionRecorder.Record();
-            }
-            else
-            {
-                actionRecorder.StopRecording();
-            }
+            RecordAndPlay();
         }
         //Delete previous recording and reset
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            if (actionRecorder.actionsList.Count > 0)
-            {
-                actionRecorder.StopPlayback();
-                actionRecorder.DeletePreviousRecording();
-                actionRecorder.isPlaying = false;
-                actionRecorder.isRecording = false;
-                sceneController.ResetLevel(mainScene);
-            }
+            Redo();
         }
     }
 
@@ -95,6 +83,50 @@ public class GameController : MonoBehaviour
             Instantiate(characterPrefab, characterPrefab.transform.position, characterPrefab.transform.rotation);
         SceneManager.MoveGameObjectToScene(character.gameObject, SceneManager.GetSceneByName(scene));
         return character;
+    }
+
+    public void SaveReset()
+    {
+        if (actionRecorder.currentRecords > 0)
+        {
+            if (!actionRecorder.isPlaying)
+            {
+                actionRecorder.currentRecords--;
+                actionRecorder.StopPlayback();
+                actionRecorder.SaveRecording();
+                actionRecorder.isPlaying = false;
+                actionRecorder.isRecording = false;
+                sceneController.ResetLevel(mainScene);
+            }
+        }
+    }
+
+    public void RecordAndPlay()
+    {
+        if (!actionRecorder.isRecording)
+        {
+            actionRecorder.PlayAllRecordings();
+            actionRecorder.Record();
+        }
+        else
+        {
+            actionRecorder.StopRecording();
+        }
+    }
+
+    public void Redo()
+    {
+        if (actionRecorder.actionsList.Count > 0)
+        {
+            actionRecorder.currentRecords++;
+            actionRecorder.StopRecording();
+            actionRecorder.StopPlayback();
+            actionRecorder.DeletePreviousRecording();
+            actionRecorder.ResetRecorder();
+            actionRecorder.isPlaying = false;
+            actionRecorder.isRecording = false;
+            sceneController.ResetLevel(mainScene);
+        }
     }
 
     
