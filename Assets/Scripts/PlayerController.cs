@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (actionRecorder.stepsIndex == actionRecorder.totalSteps)
+        {
+            characterController2D.MoveHorizontal(0);
+            characterController2D.MoveVeritcal(0);
+            return;
+        }
         characterController2D.MoveHorizontal(Input.GetAxis("Horizontal"));
         characterController2D.MoveVeritcal(Input.GetAxis("Vertical"));
 
