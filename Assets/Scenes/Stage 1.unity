@@ -1112,6 +1112,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 117831512135746180, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117831512135746180, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117831512135746180, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117831512135746180, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 117831512135746180, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109669510419070801, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109669510419070801, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109669510419070801, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109669510419070801, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4909349309709743233, guid: c3c5198dc038581408bea133956c771c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1484,6 +1529,18 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 2af631c7436175147a3c8a26d0441a08, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: fec7281d35e04524b945f01a29b2f398, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -1499,6 +1556,20 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 3366299034474465564, guid: fe9b80305637ed64c8ae57a7b323007c,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 5
     m_Data:
@@ -1521,11 +1592,23 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 5
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 7.083954, g: 7.083954, b: 7.083954, a: 7.083954}
+  - m_RefCount: 0
+    m_Data: {r: 5.971054, g: 5.971054, b: 5.971054, a: 5.971054}
+  - m_RefCount: 0
+    m_Data: {r: 6.372055, g: 6.372055, b: 6.372055, a: 6.372055}
+  - m_RefCount: 0
+    m_Data: {r: 4.7035065, g: 4.7035065, b: 4.7035065, a: 4.7035065}
+  - m_RefCount: 0
+    m_Data: {r: 6.979599, g: 6.979599, b: 6.979599, a: 6.979599}
+  - m_RefCount: 0
+    m_Data: {r: 6.266556, g: 6.266556, b: 6.266556, a: 6.266556}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -4, y: -3, z: 0}
-  m_Size: {x: 7, y: 7, z: 1}
+  m_Size: {x: 13, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1598,7 +1681,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
