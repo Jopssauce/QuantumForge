@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public string sceneToReset;
+    public string mainScene;
     public Character player;
     [SerializeField]
     private Character characterPrefab = null;
+    [SerializeField]
+    private LevelConfig levelConfig;
     SceneController sceneController;
     ActionRecorder actionRecorder;
     private void Awake()
@@ -46,7 +48,7 @@ public class GameController : MonoBehaviour
                 actionRecorder.SaveRecording();
                 actionRecorder.isPlaying = false;
                 actionRecorder.isRecording = false;
-                sceneController.ResetLevel(sceneToReset);
+                sceneController.ResetLevel(mainScene);
             }
         }
         //Reset
@@ -56,7 +58,7 @@ public class GameController : MonoBehaviour
             {
                 actionRecorder.StopPlayback();
                 actionRecorder.isPlaying = false;
-                sceneController.ResetLevel(sceneToReset);
+                sceneController.ResetLevel(mainScene);
             }
         }
         //Record and Play
@@ -81,7 +83,7 @@ public class GameController : MonoBehaviour
                 actionRecorder.DeletePreviousRecording();
                 actionRecorder.isPlaying = false;
                 actionRecorder.isRecording = false;
-                sceneController.ResetLevel(sceneToReset);
+                sceneController.ResetLevel(mainScene);
             }
         }
     }

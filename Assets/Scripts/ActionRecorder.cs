@@ -38,37 +38,6 @@ public class ActionRecorder : MonoBehaviour
     private void Update()
     {
         stepsLeft = Mathf.Abs(stepsIndex - totalSteps);
-        ////Record and Play
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    if (!isRecording)
-        //    {
-        //        PlayAllRecordings();
-        //        Record();
-        //    }
-        //    else
-        //    {
-        //        StopRecording();
-        //    }
-        //}
-        //if (Input.GetKeyDown(KeyCode.O) && !isRecording)
-        //{
-        //    //RewindRecording();
-        //    //Replace with Reset
-        //}
-        //if (Input.GetKeyDown(KeyCode.P) && !isRecording)
-        //{
-        //    PlayAllRecordings();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Return) && isRecording)
-        //{
-        //    StopRecording();
-        //    SaveRecording();
-        //}
-        //if (Input.GetKeyDown(KeyCode.F2) && !isRecording)
-        //{
-        //    ResetRecorder();
-        //}
     }
 
     private void FixedUpdate()
@@ -157,7 +126,7 @@ public class ActionRecorder : MonoBehaviour
         for (int i = 0; i < actionsList.Count; i++)
         {
             Character character;
-            character = gameController.CreateCharacter("Main");
+            character = gameController.CreateCharacter(gameController.mainScene);
             IEnumerator cor;
             cor = PlayRecording(actionsList[i], character);
             coroutines.Add(cor);
@@ -173,7 +142,7 @@ public class ActionRecorder : MonoBehaviour
             if (currentPlayingCoroutine == null)
             {
                 Character character;
-                character = gameController.CreateCharacter("Main");
+                character = gameController.CreateCharacter(gameController.mainScene);
                 currentPlayingCoroutine = PlayRecording(actionsList[coroutineIndex], character);
                 StartCoroutine(currentPlayingCoroutine);
                 coroutineIndex++;
