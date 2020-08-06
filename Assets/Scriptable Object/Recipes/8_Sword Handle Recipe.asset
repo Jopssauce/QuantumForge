@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36c51c9bd40995849a3952fa6e273696, type: 3}
-  m_Name: 7_Steel Sword Recipe
+  m_Name: 8_Sword Handle Recipe
   m_EditorClassIdentifier: 
   recipeName: 
   component: {fileID: 0}
   components:
-  - {fileID: 11400000, guid: 4b07ecb0f76267543874b0990e1f3b25, type: 2}
-  - {fileID: 11400000, guid: 3db03b199f6f7ff409be1b5f8fc3b0f0, type: 2}
-  resultItem: {fileID: 11400000, guid: b854b72ba398317448c2a0e784f28272, type: 2}
+  - {fileID: 11400000, guid: 2ce521ac9ad56774a9f7bfd32908e749, type: 2}
+  - {fileID: 11400000, guid: 903816ebf52b1e64cad218b450141947, type: 2}
+  resultItem: {fileID: 11400000, guid: 3db03b199f6f7ff409be1b5f8fc3b0f0, type: 2}
