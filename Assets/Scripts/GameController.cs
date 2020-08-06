@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public delegate void OnLifelineDepleted();
+    public event OnLifelineDepleted onLifelineDepleted;
+
     public static GameController instance { get; private set; }
     public string mainScene;
     public Character player;
@@ -20,6 +23,8 @@ public class GameController : MonoBehaviour
     public KeyCode saveKey      = KeyCode.I;
     public KeyCode cancelKey    = KeyCode.O;
     public KeyCode redoKey      = KeyCode.P;
+
+    bool hasDied;
 
     private void Awake()
     {
@@ -53,6 +58,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (actionRecorder.stepsIndex == actionRecorder.totalSteps && hasDied == false)
+        {
+            hasDied = true;
+            onLifelineDepleted?.Invoke();
+        }
+
         //Save and Reset
         if (Input.GetKeyDown(saveKey))
         {
@@ -66,22 +77,6 @@ public class GameController : MonoBehaviour
         {
             Redo();
         }
-        //Reset
-        //if (Input.GetKeyDown(KeyCode.F3))
-        //{
-        //    if (!actionRecorder.isPlaying)
-        //    {
-        //        actionRecorder.StopPlayback();
-        //        actionRecorder.isPlaying = false;
-        //        sceneController.ResetLevel(mainScene);
-        //    }
-        //}
-        ////Record and Play
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RecordAndPlay();
-        //}
-        //Delete previous recording and reset
 
     }
 
@@ -92,6 +87,17 @@ public class GameController : MonoBehaviour
             Instantiate(characterPrefab, characterPrefab.transform.position, characterPrefab.transform.rotation);
         SceneManager.MoveGameObjectToScene(character.gameObject, SceneManager.GetSceneByName(scene));
         return character;
+    }
+
+    public void ResetAll()
+    {
+        actionRecorder.StopRecording();
+        actionRecorder.StopPlayback();
+        actionRecorder.ResetRecorder();
+        actionRecorder.CleanRecorder();
+        actionRecorder.isPlaying = false;
+        actionRecorder.isRecording = false;
+        sceneController.ResetLevel(mainScene);
     }
 
     public void SaveReset()

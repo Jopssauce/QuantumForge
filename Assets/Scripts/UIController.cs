@@ -13,10 +13,13 @@ public class UIController : MonoBehaviour
     public Sprite filledSprite;
     public Sprite emptySprite;
 
+    public GameObject restartPanel;
+
     private void Start()
     {
         gameController = GameController.instance;
         actionRecorder = ActionRecorder.instance;
+        gameController.onLifelineDepleted += ToggleRestartPanel;
     }
 
     private void Update()
@@ -43,5 +46,16 @@ public class UIController : MonoBehaviour
     public void UpdateLifelineSprite()
     {
         lifeLine.fillAmount =  ((float)actionRecorder.stepsLeft / (float)actionRecorder.totalSteps);
+    }
+
+    public void RestartAll()
+    {
+        gameController.ResetAll();
+        //restartPanel.SetActive(false);
+    }
+
+    public void ToggleRestartPanel()
+    {
+        restartPanel.SetActive(!restartPanel.activeSelf);
     }
 }
