@@ -256,6 +256,12 @@ public class ActionRecorder : MonoBehaviour
         actionsList.Clear();
     }
 
+    public void CleanRecorder()
+    {
+        ResetSteps();
+        actions.Clear();
+    }
+
     public void ResetSteps()
     {
         totalSteps = 0;

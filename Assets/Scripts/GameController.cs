@@ -17,6 +17,10 @@ public class GameController : MonoBehaviour
     SceneController sceneController;
     ActionRecorder actionRecorder;
 
+    public KeyCode saveKey      = KeyCode.I;
+    public KeyCode cancelKey    = KeyCode.O;
+    public KeyCode redoKey      = KeyCode.P;
+
     private void Awake()
     {
         instance = this;
@@ -50,30 +54,35 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         //Save and Reset
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(saveKey))
         {
             SaveReset();
         }
-        //Reset
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(cancelKey))
         {
-            if (!actionRecorder.isPlaying)
-            {
-                actionRecorder.StopPlayback();
-                actionRecorder.isPlaying = false;
-                sceneController.ResetLevel(mainScene);
-            }
+            Cancel();
         }
-        //Record and Play
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RecordAndPlay();
-        }
-        //Delete previous recording and reset
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(redoKey))
         {
             Redo();
         }
+        //Reset
+        //if (Input.GetKeyDown(KeyCode.F3))
+        //{
+        //    if (!actionRecorder.isPlaying)
+        //    {
+        //        actionRecorder.StopPlayback();
+        //        actionRecorder.isPlaying = false;
+        //        sceneController.ResetLevel(mainScene);
+        //    }
+        //}
+        ////Record and Play
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RecordAndPlay();
+        //}
+        //Delete previous recording and reset
+
     }
 
     //Characters character into a specific scene
@@ -89,28 +98,12 @@ public class GameController : MonoBehaviour
     {
         if (actionRecorder.currentRecords > 0)
         {
-            if (!actionRecorder.isPlaying)
-            {
-                actionRecorder.currentRecords--;
-                actionRecorder.StopPlayback();
-                actionRecorder.SaveRecording();
-                actionRecorder.isPlaying = false;
-                actionRecorder.isRecording = false;
-                sceneController.ResetLevel(mainScene);
-            }
-        }
-    }
-
-    public void RecordAndPlay()
-    {
-        if (!actionRecorder.isRecording)
-        {
-            actionRecorder.PlayAllRecordings();
-            actionRecorder.Record();
-        }
-        else
-        {
-            actionRecorder.StopRecording();
+            actionRecorder.currentRecords--;
+            actionRecorder.StopPlayback();
+            actionRecorder.SaveRecording();
+            actionRecorder.isPlaying = false;
+            actionRecorder.isRecording = false;
+            sceneController.ResetLevel(mainScene);
         }
     }
 
@@ -128,6 +121,31 @@ public class GameController : MonoBehaviour
             sceneController.ResetLevel(mainScene);
         }
     }
+
+    public void Cancel()
+    {
+        actionRecorder.StopRecording();
+        actionRecorder.StopPlayback();
+        actionRecorder.CleanRecorder();
+        actionRecorder.isPlaying = false;
+        actionRecorder.isRecording = false;
+        sceneController.ResetLevel(mainScene);
+    }
+
+    public void RecordAndPlay()
+    {
+        if (!actionRecorder.isRecording)
+        {
+            actionRecorder.PlayAllRecordings();
+            actionRecorder.Record();
+        }
+        else
+        {
+            actionRecorder.StopRecording();
+        }
+    }
+
+    
 
     
 }
