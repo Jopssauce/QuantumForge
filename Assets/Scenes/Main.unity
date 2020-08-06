@@ -713,9 +713,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e0deab9b3177b4985fbe9cad118df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainScene: Main
   player: {fileID: 139732703}
   characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
     type: 3}
+  levelConfig: {fileID: 0}
 --- !u!4 &1270071220
 Transform:
   m_ObjectHideFlags: 0
