@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
             characterController2D.MoveVeritcal(0);
             return;
         }
-        characterController2D.MoveHorizontal(Input.GetAxis("Horizontal"));
-        characterController2D.MoveVeritcal(Input.GetAxis("Vertical"));
+        characterController2D.MoveHorizontal(Input.GetAxisRaw("Horizontal"));
+        characterController2D.MoveVeritcal(Input.GetAxisRaw("Vertical"));
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
