@@ -29,6 +29,11 @@ public class UIController : MonoBehaviour
     {
         UpdateRecordingSprites();
         UpdateLifelineSprite();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleRecipePanel();
+        }
     }
 
     public void UpdateRecordingSprites()
@@ -65,6 +70,11 @@ public class UIController : MonoBehaviour
     public void ToggleRestartPanel()
     {
         restartPanel.SetActive(!restartPanel.activeSelf);
+    }
+
+    public void ToggleRecipePanel()
+    {
+        recipePanel.SetActive(!recipePanel.activeSelf);
     }
 
     public void RevealWinPanel()

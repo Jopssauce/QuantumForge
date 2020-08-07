@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
         gameController  = GameController.instance;
         actionRecorder  = ActionRecorder.instance;
 
-        StartCoroutine(LateStart(0.2f));
+        if(gameController != null)StartCoroutine(LateStart(0.2f));
     }
 
     private void Update()
@@ -27,6 +27,10 @@ public class Tutorial : MonoBehaviour
         if (gameController == null)
         {
             gameController = GameController.instance;
+        }
+        if (gameController == null)
+        {
+            return;
         }
         if (gameController.isTutorial == false)
         {
