@@ -36,7 +36,7 @@ public class StationOutput : StationIO
 
     public void GiveItem(Item resultItem, Character character)
     {
-        character.items.Add(resultItem);
+        character.TakeItem(resultItem);
         ClearOutput();
     }
 

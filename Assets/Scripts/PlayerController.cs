@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Character character;
     public ActionRecorder actionRecorder;
 
+    public bool canMove = true;
+
     private void Start()
     {
         actionRecorder = ActionRecorder.instance;
@@ -19,19 +21,28 @@ public class PlayerController : MonoBehaviour
         {
             characterController2D.MoveHorizontal(0);
             characterController2D.MoveVeritcal(0);
-            return;
+            canMove = false;
         }
-        characterController2D.MoveHorizontal(Input.GetAxis("Horizontal"));
-        characterController2D.MoveVeritcal(Input.GetAxis("Vertical"));
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            if (character.interactable != null)
+            canMove = true;
+        }
+
+        if (canMove)
+        {
+            characterController2D.MoveHorizontal(Input.GetAxisRaw("Horizontal"));
+            characterController2D.MoveVeritcal(Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                character.Interact(character.interactable);
-                actionRecorder.RecordInteract(character.interactable);
+                if (character.interactable != null)
+                {
+                    character.Interact(character.interactable);
+                    actionRecorder.RecordInteract(character.interactable);
+                }
             }
         }
+
     }
 
 

@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Table : Interactable
+public class DepositBox : Interactable
 {
     [SerializeField]
-    Item itemInfo;
+    Item itemInfo = null;
+    [SerializeField]
+    Item correctItem = null;
     public SpriteRenderer itemSprite;
+
+    GameController gameController;
+
+    private void Start()
+    {
+        gameController = GameController.instance;
+    }
 
     public override void Interact(Character character)
     {
@@ -28,13 +37,22 @@ public class Table : Interactable
     {
         itemInfo = character.GiveCharacterItem();
         itemSprite.sprite = itemInfo.sprite;
+        if (item.id == correctItem.id)
+        {
+            ProcWinCondition();
+        }
     }
 
     //Gives item to character
     void GiveItem(Character character)
     {
-        character.TakeItem(itemInfo);
+        character.items.Add(itemInfo);
         itemSprite.sprite = null;
         itemInfo = null;
+    }
+
+    void ProcWinCondition()
+    {
+        gameController.WinLevel();
     }
 }

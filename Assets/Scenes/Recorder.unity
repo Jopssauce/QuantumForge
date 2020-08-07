@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayer: {fileID: 0}
   gameController: {fileID: 0}
+  levelConfig: {fileID: 0}
   maxRecordTime: 10
   isRecording: 0
   isRewinding: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   totalSteps: 0
   stepsIndex: 0
   stepsLeft: 0
+  currentRecords: 0
 --- !u!4 &1840420773
 Transform:
   m_ObjectHideFlags: 0

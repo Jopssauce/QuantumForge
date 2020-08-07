@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelConfig : ScriptableObject
 {
     public int levelId;
+    public string levelName;
+    public string nextLevelName;
     public float maxRecordTime = 5f;
     public int recordAmount = 3;
 }

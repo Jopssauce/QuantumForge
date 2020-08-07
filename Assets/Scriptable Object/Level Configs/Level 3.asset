@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   levelId: 3
+  levelName: 
+  nextLevelName: Done
   maxRecordTime: 10
   recordAmount: 3

@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     public float rayDistance = 1;
     public Interactable interactable;
 
+    public SpriteRenderer heldItem;
+
     RaycastHit2D[] hit;
     Ray2D ray;
 
@@ -62,9 +64,19 @@ public class Character : MonoBehaviour
         {
             Item item = items[0];
             items.RemoveAt(0);
+            heldItem.sprite = null;
             return item;
         }
         return null;
+    }
+
+    public void TakeItem(Item item)
+    {
+        if (items.Count < 1)
+        {
+            heldItem.sprite = item.sprite;
+            items.Add(item);
+        }
     }
 
     public void OnDrawGizmos()
