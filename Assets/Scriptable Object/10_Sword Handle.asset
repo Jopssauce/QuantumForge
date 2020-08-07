@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword Handle
   id: 10
-  sprite: {fileID: 21300000, guid: c5d82b1fdc802e34495bef9d286a0c11, type: 3}
+  sprite: {fileID: 21300000, guid: 3e93084f95cd77e419ee88fda6e74de1, type: 3}

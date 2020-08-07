@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &287074116
 Grid:
   m_ObjectHideFlags: 0
@@ -596,7 +596,7 @@ PrefabInstance:
     - target: {fileID: 1715789945078418893, guid: 45d885f489d73cf48a60f03d229a89c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 1715789945078418893, guid: 45d885f489d73cf48a60f03d229a89c0,
         type: 3}
@@ -681,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 2017823469343148339, guid: b5f7dfb50302ff946be33cb19ea6eada,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 2017823469343148339, guid: b5f7dfb50302ff946be33cb19ea6eada,
         type: 3}
@@ -1042,7 +1042,7 @@ PrefabInstance:
     - target: {fileID: 3217298878711463144, guid: 7b11b6a283d0f8547a58250270a4f87b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 3217298878711463144, guid: 7b11b6a283d0f8547a58250270a4f87b,
         type: 3}
@@ -2178,7 +2178,7 @@ PrefabInstance:
     - target: {fileID: 999744459584762619, guid: a8b2626afb379784193aeaa867053979,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 999744459584762619, guid: a8b2626afb379784193aeaa867053979,
         type: 3}
@@ -2229,6 +2229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Deposit Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 999744460843444192, guid: a8b2626afb379784193aeaa867053979,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8b2626afb379784193aeaa867053979, type: 3}

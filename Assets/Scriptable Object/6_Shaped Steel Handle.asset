@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shaped Steel Handle
   id: 6
-  sprite: {fileID: 21300000, guid: c5d82b1fdc802e34495bef9d286a0c11, type: 3}
+  sprite: {fileID: 21300000, guid: 1b8c2a78168c3874293c4a3b6de6f7e5, type: 3}

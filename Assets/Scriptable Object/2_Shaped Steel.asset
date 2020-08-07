@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shaped Steel
   id: 2
-  sprite: {fileID: 21300000, guid: 6d95ee899d78f804bb2f686997ab563d, type: 3}
+  sprite: {fileID: 21300000, guid: 923fc167cd1c6c34e9ea890fec06b0f2, type: 3}

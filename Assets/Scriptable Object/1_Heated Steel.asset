@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Heated Steel
   id: 1
-  sprite: {fileID: 21300000, guid: 6d95ee899d78f804bb2f686997ab563d, type: 3}
+  sprite: {fileID: 21300000, guid: 3359228e37c5f274eb789e00971ab19b, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Round Steel
   id: 4
-  sprite: {fileID: 21300000, guid: c5d82b1fdc802e34495bef9d286a0c11, type: 3}
+  sprite: {fileID: 21300000, guid: 68ea38fabc05451478f5d237446dcdb6, type: 3}

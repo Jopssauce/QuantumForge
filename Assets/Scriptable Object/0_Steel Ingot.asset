@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08e66e64476473468fa5827531069bc, type: 3}
   m_Name: 0_Steel Ingot
   m_EditorClassIdentifier: 
-  itemName: Round Steel
+  itemName: Steel Ingot
   id: 0
-  sprite: {fileID: 21300000, guid: c5d82b1fdc802e34495bef9d286a0c11, type: 3}
+  sprite: {fileID: 21300000, guid: eb208b2907bde6044946a7b57412e8af, type: 3}
