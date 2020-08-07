@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
 
     public GameObject restartPanel;
     public GameObject winPanel;
+    public GameObject recipePanel;
 
     private void Start()
     {
