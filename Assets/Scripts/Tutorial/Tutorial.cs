@@ -24,6 +24,16 @@ public class Tutorial : MonoBehaviour
 
     private void Update()
     {
+        if (gameController == null)
+        {
+            gameController = GameController.instance;
+        }
+        if (gameController.isTutorial == false)
+        {
+            uITutorial.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+            Debug.Log(true);
+        }
         //I dunno why but touching this will crash unity and make me go insane
         if (gameController.isTutorial && isTrigger == false)
         {
