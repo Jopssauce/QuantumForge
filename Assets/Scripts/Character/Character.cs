@@ -67,6 +67,14 @@ public class Character : MonoBehaviour
         return null;
     }
 
+    public void TakeItem(Item item)
+    {
+        if (items.Count < 1)
+        {
+            items.Add(item);
+        }
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

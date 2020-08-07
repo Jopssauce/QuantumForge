@@ -38,7 +38,7 @@ public class StationInput : StationIO
 
     public void GiveItem(Item item, Character character)
     {
-        character.items.Add(item);
+        character.TakeItem(item);
         ClearInput();
     }
 
