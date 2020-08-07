@@ -2243,6 +2243,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 22953273861d2894ca872eabafd482d9,
         type: 3}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.7260473
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.026906073
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.053812
+      objectReference: {fileID: 0}
     - target: {fileID: 1716897254553866040, guid: 871b59f50daf78b4a86b94d524f76d0c,
         type: 3}
       propertyPath: itemRecipes.Array.size
@@ -3011,6 +3031,26 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.022014022
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.044028
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.002445817
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716897253511783231, guid: 871b59f50daf78b4a86b94d524f76d0c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.7211554
+      objectReference: {fileID: 0}
     - target: {fileID: 1716897254553866040, guid: 871b59f50daf78b4a86b94d524f76d0c,
         type: 3}
       propertyPath: itemRecipes.Array.size
@@ -3297,6 +3337,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crafting Table
       objectReference: {fileID: 0}
+    - target: {fileID: 1696717878092957820, guid: 1269e44a46d20a14092fbd95ecca3a6e,
+        type: 3}
+      propertyPath: itemRecipes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696717878092957820, guid: 1269e44a46d20a14092fbd95ecca3a6e,
+        type: 3}
+      propertyPath: itemRecipes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: df65c3805d59a024eb8afd9f59eb9091,
+        type: 2}
     - target: {fileID: 1696717878092957821, guid: 1269e44a46d20a14092fbd95ecca3a6e,
         type: 3}
       propertyPath: m_SortingOrder
