@@ -7,12 +7,23 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
 
+    public bool LoadMenuFirst;
+    public GameObject tutorial;
+
     AsyncOperation async;
     AsyncOperation async2;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        if (LoadMenuFirst)
+        {
+            SceneManager.LoadSceneAsync("Main Menu", LoadSceneMode.Additive);
+        }
     }
 
     public void ResetLevel(string scene)

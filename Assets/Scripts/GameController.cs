@@ -47,6 +47,11 @@ public class GameController : MonoBehaviour
         actionRecorder.gameController = this;
         actionRecorder.LookAt(player);
 
+        if (isTutorial)
+        {
+            sceneController.tutorial.gameObject.SetActive(true);
+        }
+
         //If there is no level config or mismatching config
         if (actionRecorder.levelConfig == null || levelConfig.levelId != actionRecorder.levelConfig.levelId)
         {

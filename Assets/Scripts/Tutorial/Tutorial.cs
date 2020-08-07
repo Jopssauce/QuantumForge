@@ -36,7 +36,6 @@ public class Tutorial : MonoBehaviour
         {
             uITutorial.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
-            Debug.Log(true);
         }
         //I dunno why but touching this will crash unity and make me go insane
         if (gameController.isTutorial && isTrigger == false)
