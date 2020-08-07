@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
     public delegate void OnLifelineDepleted();
     public event OnLifelineDepleted onLifelineDepleted;
 
+    public delegate void OnWin();
+    public event OnWin onWin;
+
     public static GameController instance { get; private set; }
     public string mainScene;
     public Character player;
@@ -151,7 +154,19 @@ public class GameController : MonoBehaviour
         }
     }
 
-    
+    public void WinLevel()
+    {
+        onWin?.Invoke();
+    }
+
+    public void LoadNextLevel()
+    {
+        actionRecorder.StopRecording();
+        actionRecorder.StopPlayback();
+        actionRecorder.ResetRecorder();
+        actionRecorder.CleanRecorder();
+        sceneController.ReplaceLevel(mainScene, levelConfig.nextLevelName);
+    }
 
     
 }

@@ -14,12 +14,14 @@ public class UIController : MonoBehaviour
     public Sprite emptySprite;
 
     public GameObject restartPanel;
+    public GameObject winPanel;
 
     private void Start()
     {
         gameController = GameController.instance;
         actionRecorder = ActionRecorder.instance;
         gameController.onLifelineDepleted += ToggleRestartPanel;
+        gameController.onWin += RevealWinPanel;
     }
 
     private void Update()
@@ -54,8 +56,18 @@ public class UIController : MonoBehaviour
         //restartPanel.SetActive(false);
     }
 
+    public void LoadNextLevel()
+    {
+        gameController.LoadNextLevel();
+    }
+
     public void ToggleRestartPanel()
     {
         restartPanel.SetActive(!restartPanel.activeSelf);
+    }
+
+    public void RevealWinPanel()
+    {
+        winPanel.gameObject.SetActive(true);
     }
 }

@@ -17,4 +17,10 @@ public class SceneController : MonoBehaviour
         SceneManager.UnloadSceneAsync(scene);
         SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
     }
+
+    public void ReplaceLevel(string currentScene, string newScene)
+    {
+        SceneManager.UnloadSceneAsync(currentScene);
+        SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+    }
 }
