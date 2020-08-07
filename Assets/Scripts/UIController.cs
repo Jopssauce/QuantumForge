@@ -33,6 +33,7 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleRecipePanel();
+            gameController.isRecipeOpen = !gameController.isRecipeOpen;
         }
     }
 

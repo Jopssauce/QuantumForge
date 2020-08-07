@@ -17,16 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (actionRecorder.stepsIndex == actionRecorder.totalSteps)
-        {
-            characterController2D.MoveHorizontal(0);
-            characterController2D.MoveVeritcal(0);
-            canMove = false;
-        }
-        else
-        {
-            canMove = true;
-        }
+       
 
         if (canMove)
         {

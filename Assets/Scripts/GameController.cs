@@ -15,8 +15,8 @@ public class GameController : MonoBehaviour
     public string mainScene;
     public Character player;
 
-    public bool canMove = true;
     public bool canControl = true;
+    public bool isRecipeOpen = false;
 
     [SerializeField]
     private Character characterPrefab = null;
@@ -76,6 +76,21 @@ public class GameController : MonoBehaviour
             hasDied = true;
             onLifelineDepleted?.Invoke();
             canControl = false;
+            player.GetComponent<PlayerController>().canMove = false;
+            return;
+        }
+
+        if (isRecipeOpen)
+        {
+            canControl = false;
+            player.GetComponent<PlayerController>().canMove = false;
+            actionRecorder.isRecording = false;
+        }
+        else
+        {
+            canControl = true;
+            player.GetComponent<PlayerController>().canMove = true;
+            actionRecorder.isRecording = true;
         }
 
         if (canControl)
