@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
                 if (result.collider.GetComponent<Interactable>() != null)
                 {
                     interactable = result.collider.GetComponent<Interactable>();
+                    return;
                 }
                 else
                 {
