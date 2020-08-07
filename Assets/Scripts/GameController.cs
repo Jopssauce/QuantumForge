@@ -131,7 +131,7 @@ public class GameController : MonoBehaviour
             actionRecorder.StopRecording();
             actionRecorder.StopPlayback();
             actionRecorder.DeletePreviousRecording();
-            actionRecorder.ResetRecorder();
+            actionRecorder.CleanRecorder();
             actionRecorder.isPlaying = false;
             actionRecorder.isRecording = false;
             sceneController.ResetLevel(mainScene);
