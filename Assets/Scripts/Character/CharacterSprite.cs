@@ -15,29 +15,29 @@ public class CharacterSprite : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
        
     }
 
     private void Update()
     {
         facingDirection = characterController.facingDirection;
-        if (facingDirection.x > 0)
-        {
-            spriteRenderer.sprite = right;
-        }
-        if (facingDirection.x < 0)
-        {
-            spriteRenderer.sprite = left;
-        }
+        //if (facingDirection.x > 0)
+        //{
+        //    spriteRenderer.sprite = right;
+        //}
+        //if (facingDirection.x < 0)
+        //{
+        //    spriteRenderer.sprite = left;
+        //}
 
-        if (facingDirection.y > 0)
-        {
-            spriteRenderer.sprite = front;
-        }
-        if (facingDirection.y < 0)
-        {
-            spriteRenderer.sprite = back;
-        }
+        //if (facingDirection.y > 0)
+        //{
+        //    spriteRenderer.sprite = front;
+        //}
+        //if (facingDirection.y < 0)
+        //{
+        //    spriteRenderer.sprite = back;
+        //}
     }
 }
