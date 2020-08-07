@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 0}
   correctItem: {fileID: 11400000, guid: 4b07ecb0f76267543874b0990e1f3b25, type: 2}
-  itemSprite: {fileID: 999744460843444207}
+  itemSprite: {fileID: 0}
 --- !u!1 &999744460843444192
 GameObject:
   m_ObjectHideFlags: 0

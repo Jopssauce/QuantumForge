@@ -188,6 +188,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8638416021165648155, guid: a2db5e82bf8bfcf4389d744b18164b8f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638416021165648155, guid: a2db5e82bf8bfcf4389d744b18164b8f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8638416021165648155, guid: a2db5e82bf8bfcf4389d744b18164b8f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2db5e82bf8bfcf4389d744b18164b8f, type: 3}
 --- !u!114 &219337811 stripped
@@ -2234,6 +2249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1287872860904487878, guid: a8b2626afb379784193aeaa867053979,
+        type: 3}
+      propertyPath: itemSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8b2626afb379784193aeaa867053979, type: 3}
