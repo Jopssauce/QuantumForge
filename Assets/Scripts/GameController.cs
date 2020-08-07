@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public string mainScene;
     public Character player;
 
+    public bool canMove = true;
+    public bool canControl = true;
+
     [SerializeField]
     private Character characterPrefab = null;
     [SerializeField]
@@ -65,20 +68,24 @@ public class GameController : MonoBehaviour
         {
             hasDied = true;
             onLifelineDepleted?.Invoke();
+            canControl = false;
         }
 
-        //Save and Reset
-        if (Input.GetKeyDown(saveKey))
+        if (canControl)
         {
-            SaveReset();
-        }
-        if (Input.GetKeyDown(cancelKey))
-        {
-            Cancel();
-        }
-        if (Input.GetKeyDown(redoKey))
-        {
-            Redo();
+            //Save and Reset
+            if (Input.GetKeyDown(saveKey))
+            {
+                SaveReset();
+            }
+            if (Input.GetKeyDown(cancelKey))
+            {
+                Cancel();
+            }
+            if (Input.GetKeyDown(redoKey))
+            {
+                Redo();
+            }
         }
 
     }
