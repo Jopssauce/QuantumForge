@@ -8,6 +8,18 @@ public class Table : Interactable
     Item itemInfo;
     public SpriteRenderer itemSprite;
 
+    private void Start()
+    {
+        if (itemInfo != null)
+        {
+            itemSprite.sprite = itemInfo.sprite;
+        }
+        else
+        {
+            itemSprite.sprite = null;
+        }
+    }
+
     public override void Interact(Character character)
     {
         base.Interact(character);
