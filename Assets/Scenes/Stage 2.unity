@@ -280,6 +280,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2017823470467882021, guid: b5f7dfb50302ff946be33cb19ea6eada,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.36272
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017823470467882021, guid: b5f7dfb50302ff946be33cb19ea6eada,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.36272
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017823470467882021, guid: b5f7dfb50302ff946be33cb19ea6eada,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017823470467882021, guid: b5f7dfb50302ff946be33cb19ea6eada,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.064
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017823470467882021, guid: b5f7dfb50302ff946be33cb19ea6eada,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1356
+      objectReference: {fileID: 0}
     - target: {fileID: 2017823470467882023, guid: b5f7dfb50302ff946be33cb19ea6eada,
         type: 3}
       propertyPath: m_Sprite
@@ -1256,6 +1281,7 @@ MonoBehaviour:
   characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
     type: 3}
   levelConfig: {fileID: 11400000, guid: b2bbdb60e561bf944bb89bdbd1dce649, type: 2}
+  isTutorial: 0
   saveKey: 105
   cancelKey: 111
   redoKey: 112
@@ -1899,6 +1925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877759405467085841, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c5198dc038581408bea133956c771c, type: 3}

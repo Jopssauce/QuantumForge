@@ -2403,6 +2403,7 @@ MonoBehaviour:
   characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
     type: 3}
   levelConfig: {fileID: 11400000, guid: 4f504b6c2ee32b3438f3e839fdb13a6e, type: 2}
+  isTutorial: 0
   saveKey: 105
   cancelKey: 111
   redoKey: 112
@@ -2536,6 +2537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877759405467085841, guid: c3c5198dc038581408bea133956c771c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c5198dc038581408bea133956c771c, type: 3}
