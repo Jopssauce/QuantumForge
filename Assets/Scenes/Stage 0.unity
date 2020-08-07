@@ -717,13 +717,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e0deab9b3177b4985fbe9cad118df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScene: Stage 1
+  mainScene: Stage 0
   player: {fileID: 219337811}
   canMove: 1
   canControl: 1
   characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
     type: 3}
-  levelConfig: {fileID: 11400000, guid: 521acaeb24f8ee742b8aa93caf4465f6, type: 2}
+  levelConfig: {fileID: 11400000, guid: cfa4cc8310d5bd6438c74c87e61f1606, type: 2}
   saveKey: 105
   cancelKey: 111
   redoKey: 112
