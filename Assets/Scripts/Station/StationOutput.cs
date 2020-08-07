@@ -6,8 +6,13 @@ public class StationOutput : StationIO
 {
     public delegate void OnOutput();
     public event OnOutput onOutput;
-
+    AudioManager audioManager;
     Item resultItemInfo;
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
 
     //Gives Result Item to Player
     public override void Interact(Character character)
@@ -23,6 +28,7 @@ public class StationOutput : StationIO
     {
         //Outputs result item
         resultItemInfo = resultItem;
+        audioManager.PlaySFX(station.stationSound);
         //station.item = null;
         station.items.Clear();
         DisplayItem(resultItem);

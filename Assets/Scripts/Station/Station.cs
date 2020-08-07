@@ -18,6 +18,8 @@ public class Station : Interactable
     [SerializeField]
     private List<ItemRecipe> itemRecipes = new List<ItemRecipe>();
     public List<StationInput> inputs;
+
+    public string stationSound;
     //public List<StationOutput> outputs;
 
     //For Single Components

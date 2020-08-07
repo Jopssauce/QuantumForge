@@ -7,11 +7,12 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public CharacterController2D characterController;
 
-    public float health = 20;
+    public string pickupSound;
     public float rayDistance = 1;
     public Interactable interactable;
 
     public SpriteRenderer heldItem;
+    AudioManager audioManager;
 
     RaycastHit2D[] hit;
     Ray2D ray;
@@ -21,6 +22,11 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController2D>();
+    }
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
     }
 
     private void Update()
@@ -75,6 +81,7 @@ public class Character : MonoBehaviour
     {
         if (items.Count < 1)
         {
+            audioManager.PlaySFX(pickupSound);
             heldItem.sprite = item.sprite;
             items.Add(item);
         }
