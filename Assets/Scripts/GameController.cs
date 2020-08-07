@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
     SceneController sceneController;
     ActionRecorder actionRecorder;
 
+    public bool isTutorial = false;
+
     public KeyCode saveKey      = KeyCode.I;
     public KeyCode cancelKey    = KeyCode.O;
     public KeyCode redoKey      = KeyCode.P;

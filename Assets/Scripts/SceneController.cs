@@ -7,6 +7,9 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
 
+    AsyncOperation async;
+    AsyncOperation async2;
+
     private void Awake()
     {
         instance = this;
@@ -14,13 +17,14 @@ public class SceneController : MonoBehaviour
 
     public void ResetLevel(string scene)
     {
-        SceneManager.UnloadSceneAsync(scene);
-        SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        async = SceneManager.UnloadSceneAsync(scene);
+        async.completed += delegate { SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive); };
     }
 
     public void ReplaceLevel(string currentScene, string newScene)
     {
-        SceneManager.UnloadSceneAsync(currentScene);
-        SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+        async2 = SceneManager.UnloadSceneAsync(currentScene);
+        async2.completed += delegate { SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive); };
+
     }
 }
