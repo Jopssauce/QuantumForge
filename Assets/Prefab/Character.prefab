@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
-  health: 20
+  pickupSound: Pickup
   rayDistance: 1
   interactable: {fileID: 0}
   heldItem: {fileID: 425396969557224177}

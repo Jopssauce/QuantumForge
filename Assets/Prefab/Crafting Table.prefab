@@ -338,6 +338,7 @@ MonoBehaviour:
   inputs:
   - {fileID: 1696717878978032903}
   - {fileID: 4264301518011254847}
+  stationSound: Craft Table
 --- !u!1 &1696717878517293877
 GameObject:
   m_ObjectHideFlags: 0

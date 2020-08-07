@@ -461,6 +461,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b885ffcdf7e89c4bbd9036d40cf8abd, type: 2}
   inputs:
   - {fileID: 1715789943939526168}
+  stationSound: Anvil
 --- !u!1 &1715789945328922069
 GameObject:
   m_ObjectHideFlags: 0

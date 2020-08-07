@@ -556,7 +556,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGM: []
-  SFX: []
+  SFX:
+  - Name: Pickup
+    Clip: {fileID: 8300000, guid: 0fd6d98e57f327f4483479767acf9b63, type: 3}
+    Volume: 0.5
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Forge
+    Clip: {fileID: 8300000, guid: 4b32d2557fbf95843aa43e1ac26ffde6, type: 3}
+    Volume: 0.5
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Anvil
+    Clip: {fileID: 8300000, guid: b2a216d39d3f3e543b68ba4f529f1252, type: 3}
+    Volume: 0.5
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Heat Treat
+    Clip: {fileID: 8300000, guid: fb051d146c5dafb4f9a26cc59c07cc41, type: 3}
+    Volume: 0.5
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Craft Table
+    Clip: {fileID: 8300000, guid: b341db8be16efb04aa43dba9d0de1826, type: 3}
+    Volume: 0.5
+    Loop: 0
+    Source: {fileID: 0}
 --- !u!1 &1840420771
 GameObject:
   m_ObjectHideFlags: 0

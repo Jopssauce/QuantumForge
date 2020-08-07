@@ -444,6 +444,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8cb16578a3474543bc6a73dbe52bca8, type: 2}
   inputs:
   - {fileID: 1716897253511783217}
+  stationSound: Heat Treat
 --- !u!1 &1716897254741534854
 GameObject:
   m_ObjectHideFlags: 0
