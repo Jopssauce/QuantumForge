@@ -1592,7 +1592,7 @@ MonoBehaviour:
   emptySprite: {fileID: 21300000, guid: 86194ce2f07cf4542930447f9603268e, type: 3}
   restartPanel: {fileID: 7730205971904526941}
   winPanel: {fileID: 8002923890708570253}
-  recipePanel: {fileID: 0}
+  recipePanel: {fileID: 7877759405467085841}
 --- !u!1 &4909349310057759296
 GameObject:
   m_ObjectHideFlags: 0
