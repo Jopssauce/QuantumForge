@@ -282,16 +282,16 @@ MonoBehaviour:
   index: 0
   maxPhases: 5
   isPhase1Done: 0
-  phase1Text: Move around with W, A, S, D. Then <color="red">press I<color="black">
+  phase1Text: Move around with W, A, S, D. Then <color="blue">Press I<color="black">
     to make a clone of yourself <color="red">that copies your actions
   isPhase2Done: 0
-  phase2Text: <color="red">Press O<color="black"> to reset your actions
+  phase2Text: <color="blue">Press O<color="black"> to reset your actions
   isPhase3Done: 0
-  phase3Text: <color="red">Press P<color="black"> to reset your previous clones actions.
-    You can<color="blue"> see your clones on the top right
+  phase3Text: <color="blue">Press P<color="black"> to reset your previous clones
+    actions. You can<color="blue"> see your clones on the top right.
   isPhase4Done: 0
-  phase4Text: Your goal is to craft items using your clones. <color="red">Press the
-    Spacebar<color="black"> to interact with items and work stations.
+  phase4Text: Your goal is to craft items using your clones. <color="blue">Press
+    the Spacebar<color="black"> to interact with items and work stations.
   isPhase5Done: 0
   phase5Text: 'Your goal right now is to<color="red"> craft Heated Steel <color="black">and
     bring it to the <color="red">WHITE TABLE on the bottom left. <color="blue">Press
