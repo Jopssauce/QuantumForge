@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelId: 3
   levelName: Level 3
-  nextLevelName: Done
+  nextLevelName: Main Menu
   maxRecordTime: 8.5
   recordAmount: 3
