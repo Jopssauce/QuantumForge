@@ -15,5 +15,5 @@ MonoBehaviour:
   levelId: 3
   levelName: Level 3
   nextLevelName: Done
-  maxRecordTime: 8
+  maxRecordTime: 8.5
   recordAmount: 3
