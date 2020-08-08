@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            characterController2D.MoveHorizontal(0);
+            characterController2D.MoveVeritcal(0);
+        }
 
     }
 

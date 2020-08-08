@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
             player.GetComponent<PlayerController>().canMove = false;
             actionRecorder.isRecording = false;
         }
-        else
+        else if (!isRecipeOpen && hasDied == false)
         {
             canControl = true;
             player.GetComponent<PlayerController>().canMove = true;
