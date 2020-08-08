@@ -287,7 +287,8 @@ MonoBehaviour:
   isPhase2Done: 0
   phase2Text: <color="red">Press O<color="black"> to reset your actions
   isPhase3Done: 0
-  phase3Text: <color="red">Press P<color="black"> to reset your previous clones actions
+  phase3Text: <color="red">Press P<color="black"> to reset your previous clones actions.
+    You can<color="blue"> see your clones on the top right
   isPhase4Done: 0
   phase4Text: Your goal is to craft items using your clones. <color="red">Press the
     Spacebar<color="black"> to interact with items and work stations.
