@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
     public KeyCode redoKey      = KeyCode.P;
 
     bool hasDied;
+    bool hasWon;
 
     private void Awake()
     {
@@ -71,6 +72,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (hasWon == true)
+        {
+            canControl = false;
+            player.GetComponent<PlayerController>().canMove = false;
+            return;
+        }
         if (actionRecorder.stepsIndex == actionRecorder.totalSteps && hasDied == false)
         {
             hasDied = true;
@@ -80,13 +87,19 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        if (isRecipeOpen)
+        if (isRecipeOpen || hasWon == true || hasDied == true)
         {
             canControl = false;
             player.GetComponent<PlayerController>().canMove = false;
             actionRecorder.isRecording = false;
         }
         else if (!isRecipeOpen && hasDied == false)
+        {
+            canControl = true;
+            player.GetComponent<PlayerController>().canMove = true;
+            actionRecorder.isRecording = true;
+        }
+        else if (!isRecipeOpen && hasWon == false)
         {
             canControl = true;
             player.GetComponent<PlayerController>().canMove = true;
@@ -185,6 +198,9 @@ public class GameController : MonoBehaviour
 
     public void WinLevel()
     {
+        hasWon = true;
+        canControl = false;
+        player.GetComponent<PlayerController>().canMove = false;
         onWin?.Invoke();
     }
 
