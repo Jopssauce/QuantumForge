@@ -293,7 +293,7 @@ MonoBehaviour:
     Spacebar<color="black"> to interact with items and work stations.
   isPhase5Done: 0
   phase5Text: 'Your goal right now is to<color="red"> craft Heated Steel <color="black">and
-    bring it to the <color="red">WHITE TABLE on the bottom left. <color="red">Press
+    bring it to the <color="red">WHITE TABLE on the bottom left. <color="blue">Press
     TAB<color="black"> to open the recipe sheet. '
 --- !u!114 &146428786
 MonoBehaviour:
