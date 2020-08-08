@@ -14,6 +14,9 @@ public class Character : MonoBehaviour
     public SpriteRenderer heldItem;
     AudioManager audioManager;
 
+    public bool isMoving;
+    Vector2 lastPosition;
+
     RaycastHit2D[] hit;
     Ray2D ray;
 
@@ -53,6 +56,22 @@ public class Character : MonoBehaviour
         {
             interactable = null;
         }
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if ((Vector2)transform.position == lastPosition)
+        {
+            isMoving = false;
+            Debug.Log(false);
+        }
+        else if ((Vector2)transform.position != lastPosition)
+        {
+            isMoving = true;
+        }
+        lastPosition = transform.position;
     }
 
     public void Interact(Interactable interactable)

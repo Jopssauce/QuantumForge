@@ -11,15 +11,13 @@ public class CharacterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 ||
-            Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0)
+        if ( character.isMoving)
         {
             animator.SetBool("isMoving", true);
             animator.SetFloat("X", characterController2D.facingDirection.x);
             animator.SetFloat("Y", characterController2D.facingDirection.y);
         }
-        else if (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0 ||
-                Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0)
+        else if (!character.isMoving)
         {
             animator.SetFloat("X2", characterController2D.facingDirection.x);
             animator.SetFloat("Y2", characterController2D.facingDirection.y);
