@@ -555,7 +555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65764e0caee93384da733eb43d571af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM: []
+  BGM:
+  - Name: BGM
+    Clip: {fileID: 8300000, guid: 75e1f099f70f1274db4409f40a5bbed9, type: 3}
+    Volume: 0.25
+    Loop: 1
+    Source: {fileID: 0}
   SFX:
   - Name: Pickup
     Clip: {fileID: 8300000, guid: 0fd6d98e57f327f4483479767acf9b63, type: 3}
@@ -582,6 +587,7 @@ MonoBehaviour:
     Volume: 0.5
     Loop: 0
     Source: {fileID: 0}
+  bgm: BGM
 --- !u!1 &1840420771
 GameObject:
   m_ObjectHideFlags: 0
