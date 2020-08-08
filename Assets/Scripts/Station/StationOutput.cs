@@ -20,7 +20,7 @@ public class StationOutput : StationIO
     public override void Interact(Character character)
     {
         base.Interact(character);
-        if (resultItemInfo != null)
+        if (resultItemInfo != null && character.items.Count == 0)
         {
             GiveItem(resultItemInfo, character);
         }

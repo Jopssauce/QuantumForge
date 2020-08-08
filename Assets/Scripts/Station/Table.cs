@@ -29,7 +29,7 @@ public class Table : Interactable
             Item item = character.items[0];
             PlaceItem(character, item);
         }
-        else if (itemInfo != null)
+        else if (itemInfo != null && character.items.Count == 0)
         {
             GiveItem(character);
         }

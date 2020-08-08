@@ -12,7 +12,7 @@ public class StationInput : StationIO
     public override void Interact(Character character)
     {
         base.Interact(character);
-        if (itemInfo != null)
+        if (itemInfo != null && character.items.Count == 0)
         {
             GiveItem(itemInfo, character);
         }
