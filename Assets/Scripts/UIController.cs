@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
     {
         for (int i = 0; i < recordingSprites.Count; i++)
         {
-            if (i <= actionRecorder.actionsList.Count)
+            if (i + 1 <= actionRecorder.actionsList.Count)
             {
                 recordingSprites[i].sprite = filledSprite;
             }
