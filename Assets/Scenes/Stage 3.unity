@@ -5862,7 +5862,7 @@ PrefabInstance:
         type: 3}
       propertyPath: correctItem
       value: 
-      objectReference: {fileID: 11400000, guid: 3db03b199f6f7ff409be1b5f8fc3b0f0,
+      objectReference: {fileID: 11400000, guid: b854b72ba398317448c2a0e784f28272,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8b2626afb379784193aeaa867053979, type: 3}
@@ -7917,8 +7917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScene: Stage 3
   player: {fileID: 139732703}
-  canMove: 1
   canControl: 1
+  isRecipeOpen: 0
   characterPrefab: {fileID: 8276784000269614745, guid: 93488fe65bdbf3d4d9aec41edd89c971,
     type: 3}
   levelConfig: {fileID: 11400000, guid: 4f504b6c2ee32b3438f3e839fdb13a6e, type: 2}
