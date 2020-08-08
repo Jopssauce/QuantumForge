@@ -46,7 +46,7 @@ public class DepositBox : Interactable
     //Gives item to character
     void GiveItem(Character character)
     {
-        character.items.Add(itemInfo);
+        character.TakeItem(itemInfo);
         itemSprite.sprite = null;
         itemInfo = null;
     }
