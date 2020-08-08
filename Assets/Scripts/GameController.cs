@@ -136,6 +136,7 @@ public class GameController : MonoBehaviour
 
     public void ResetAll()
     {
+        actionRecorder.currentRecords = levelConfig.recordAmount;
         actionRecorder.StopRecording();
         actionRecorder.StopPlayback();
         actionRecorder.ResetRecorder();
@@ -198,6 +199,8 @@ public class GameController : MonoBehaviour
 
     public void WinLevel()
     {
+        actionRecorder.currentRecords = levelConfig.recordAmount;
+
         hasWon = true;
         canControl = false;
         player.GetComponent<PlayerController>().canMove = false;
@@ -206,6 +209,7 @@ public class GameController : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        actionRecorder.currentRecords = levelConfig.recordAmount;
         actionRecorder.StopRecording();
         actionRecorder.StopPlayback();
         actionRecorder.ResetRecorder();
