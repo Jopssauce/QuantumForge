@@ -65,7 +65,6 @@ public class Character : MonoBehaviour
         if ((Vector2)transform.position == lastPosition)
         {
             isMoving = false;
-            Debug.Log(false);
         }
         else if ((Vector2)transform.position != lastPosition)
         {

@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource bgmSource;
     private AudioSource sfxSource;
 
+    public string bgm;
+
     private void Awake()
     {
         instance = this;
@@ -29,6 +31,11 @@ public class AudioManager : MonoBehaviour
         {
             sfx.Source = sfxSource;
         }
+    }
+
+    private void Start()
+    {
+        PlayBGM(bgm);
     }
 
     public void PlayBGM(string name)
