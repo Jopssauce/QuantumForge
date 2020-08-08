@@ -9,6 +9,8 @@ public class StationOutput : StationIO
     AudioManager audioManager;
     Item resultItemInfo;
 
+    public GameObject outputParticle;
+
     private void Start()
     {
         audioManager = AudioManager.instance;
@@ -32,6 +34,7 @@ public class StationOutput : StationIO
         //station.item = null;
         station.items.Clear();
         DisplayItem(resultItem);
+        Instantiate(outputParticle, itemSpriteRenderer.transform.position, outputParticle.transform.rotation);
         onOutput?.Invoke();
     }
 

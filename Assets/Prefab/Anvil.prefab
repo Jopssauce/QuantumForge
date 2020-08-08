@@ -282,6 +282,8 @@ MonoBehaviour:
   stationIOType: 1
   itemSpriteRenderer: {fileID: 1715789945328922068}
   station: {fileID: 1715789945078418895}
+  outputParticle: {fileID: 387605607405884598, guid: eb46978241061c344b75dc8236aeaa6d,
+    type: 3}
 --- !u!212 &1715789945036610947
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -494,6 +494,7 @@ MonoBehaviour:
   stationIOType: 1
   itemSpriteRenderer: {fileID: 1716897254493019125}
   station: {fileID: 1716897254553866040}
+  outputParticle: {fileID: 1716897254553866041}
 --- !u!212 &1716897254741534850
 SpriteRenderer:
   m_ObjectHideFlags: 0
